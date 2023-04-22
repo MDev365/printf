@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 {
 	int i, len = 0, buf_idx, s_len;
 	va_list args;
-	char buf[1024], *conv_ref;
+	char buf[1024];
 
 	va_start(args, format);
 	/*not used variabled*/
