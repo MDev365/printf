@@ -62,6 +62,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 's')
 			{
+				void *arg = va_arg(args, void *);
 				if (arg != NULL)
 				{
 					if (sizeof(*((char**)arg)) == sizeof(char*))
