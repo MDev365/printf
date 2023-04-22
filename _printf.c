@@ -48,10 +48,10 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == 'c')
 			{
-				c arg = va_arg(args, int);
-				if (arg != NULL)
+				c_arg = va_arg(args, int);
+				if (c_arg != NULL)
 				{
-					_putchar(*((char*)arg));
+					_putchar(c_arg));
 					i++;
 					len++;
 					continue;
@@ -59,10 +59,10 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 's')
 			{
-				s = va_arg(args, char *);
-				if (arg != NULL)
+				s_arg = va_arg(args, char *);
+				if (s_arg != NULL)
 				{
-					s_len = print_string(va_arg(args, char *));
+					s_len = print_string(s_arg);
 					len += s_len;
 					i++;
 					continue;
