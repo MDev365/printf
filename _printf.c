@@ -2,20 +2,16 @@
 int _printf(const char *format, ...)
 {
 	int i, len = 0;
+	char buf[1024];
+
+	/*not used variabled*/
+	(void) buf;
 
 	for (i = 0; format[i] != '\0' ; i++)
 	{
-		while (format[i] != '%')
-		{
 			_putchar(format[i]);
 			i++;
 			len++;
-		}
-		if (format[i] == '%')
-		{
-			_putchar(format[i]);
-			i++;
-		}
 	}
 	return (len);
 }
