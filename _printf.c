@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdarg.h>
+
+
+
 int _printf(const char *format, ...)
 {
 	int i, len = 0, buf_idx;
