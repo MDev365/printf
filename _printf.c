@@ -49,9 +49,9 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == 'c')
 			{
 				c_arg = va_arg(args, int);
-				if (c_arg != NULL)
+				if (c_arg)
 				{
-					_putchar(c_arg));
+					_putchar(c_arg);
 					i++;
 					len++;
 					continue;
@@ -60,7 +60,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 's')
 			{
 				s_arg = va_arg(args, char *);
-				if (s_arg != NULL)
+				if (s_arg)
 				{
 					s_len = print_string(s_arg);
 					len += s_len;
