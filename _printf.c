@@ -35,7 +35,7 @@ int _printf(const char *format, ...)
 {
 	int i, len = 0, buf_idx, s_len;
 	va_list args;
-	char buf[1024];
+	char buf[1024], c_arg, *s_arg;
 
 	va_start(args, format);
 	/*not used variabled*/
@@ -48,30 +48,24 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == 'c')
 			{
-				void *arg = va_arg(args, void *);
+				c arg = va_arg(args, int);
 				if (arg != NULL)
 				{
-					if (sizeof(*((char*)arg)) == sizeof(char))
-					{
-						_putchar(*((char*)arg));
-						i++;
-						len++;
-						continue;
-					}
+					_putchar(*((char*)arg));
+					i++;
+					len++;
+					continue;
 				}
 			}
 			else if (format[i + 1] == 's')
 			{
-				void *arg = va_arg(args, void *);
+				s = va_arg(args, char *);
 				if (arg != NULL)
 				{
-					if (sizeof(*((char**)arg)) == sizeof(char*))
-					{
-						s_len = print_string(va_arg(args, char *));
-						len += s_len;
-						i++;
-						continue;
-					}
+					s_len = print_string(va_arg(args, char *));
+					len += s_len;
+					i++;
+					continue;
 				}
 			}
 			else if (format[i + 1] == '%')
