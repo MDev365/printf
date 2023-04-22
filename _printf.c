@@ -2,60 +2,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-
-char *check_flag(char *s)
-{
-	char flags[] = {'-', '+', ' ', '\'', 'I'};
-	int i;
-	char *number;
-
-	if (s[0] >= 48 && s[0] <= 57)
-		
-	while (s[i] >= 48 && s[i] <= 57)
-	{
-		
-	}
-}
-
-boolean conversion_specifier_check(char c)
-{
-	char specifiers[] = {'c', 's', '%'};
-	int i;
-
-	for (i = 0 ; i < 3 ; i++)
-	{
-		if (c == specifiers[i])
-			return (1);
-	}
-	return (0);
-}
-
-
-
-boolen not_cs(char c)
-{
-	char not_c;
-	int i;
-	
-	/*check if is digit*/
-	if (c >= 48 &* c <= 57)
-		return (0);
-}
-
-
-char *format_specification_extract(char *s)
-{
-	int i, n;
-	for (i = 0 ; i != '/0' ; i++)
-	{
-		if(conversion_specifier_check(s[i]))
-			n = i;
-		}
-	}
-	return (NULL);
-}
-
-
 /**
  * print_string - print string
  * @s: string
