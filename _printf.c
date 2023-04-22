@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 		{
 			if (format [i + 1] == 'c')
 			{
-				_putchar(va_arg(args, char));
+				_putchar(va_arg(args, int));
 				i += 2;
 				len++;
 				continue;
