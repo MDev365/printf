@@ -6,7 +6,7 @@ int _printf(const char *format, ...)
 
 	/*not used yet variables*/
 	(void)buf;
-	(void)buf_int;
+	(void)buf_i;
 	
 	for (i = 0; format[i] != '\0' ; i++)
 	{
