@@ -61,6 +61,13 @@ int _printf(const char *format, ...)
 				i += 2;
 				continue;
 			}
+			else if(format[i + 1] == '%')
+			{
+				_putchar('%');
+				len++;
+				i += 2;
+				continue;
+			}
 		}
 			_putchar(format[i]);
 			len++;
