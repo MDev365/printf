@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 			if (format [i + 1] == 'c')
 			{
 				_putchar(va_arg(args, int));
-				i += 2;
+				i++;
 				len++;
 				continue;
 			}
@@ -57,14 +57,14 @@ int _printf(const char *format, ...)
 			{
 				s_len = print_string(va_arg(args, char *));
 				len += s_len;
-				i += 2;
+				i++;
 				continue;
 			}
 			else if(format[i + 1] == '%')
 			{
 				_putchar('%');
 				len++;
-				i += 2;
+				i++;
 				continue;
 			}
 		}
