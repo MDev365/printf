@@ -17,10 +17,8 @@ int _printf(const char *format, ...)
 		}
 		if (format[i] == '%')
 		{
+			_putchar(format[i]);
 			i++;
-			while (cs == 0)
-			{
-			}
 		}
 	}
 	return (i);
