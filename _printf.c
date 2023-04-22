@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	(void) buf;
 	(void) buf_idx;
 
-	for (i = 0 ; format[i] !  '\0' ; i++)
+	for (i = 0 ; format[i] != '\0' ; i++)
 	{
 			_putchar(format[i]);
 			len++;
