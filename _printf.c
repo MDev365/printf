@@ -48,17 +48,30 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == 'c')
 			{
-				_putchar(va_arg(args, int));
-				i++;
-				len++;
-				continue;
+				void *arg = va_arg(arg_list, void *);
+				if (arg != NULL)
+				{
+					if (sizeof(*((char*)arg)) == sizeof(char))
+					{
+						_putchar(*((char*)arg));
+						i++;
+						len++;
+						continue;
+					}
+				}
 			}
 			else if (format[i + 1] == 's')
 			{
-				s_len = print_string(va_arg(args, char *));
-				len += s_len;
-				i++;
-				continue;
+				if (arg != NULL)
+				{
+					if (sizeof(*((char**)arg)) == sizeof(char*))
+					{
+						s_len = print_string(va_arg(args, char *));
+						len += s_len;
+						i++;
+						continue;
+					}
+				}
 			}
 			else if (format[i + 1] == '%')
 			{
