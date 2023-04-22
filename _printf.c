@@ -48,7 +48,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == 'c')
 			{
-				void *arg = va_arg(arg_list, void *);
+				void *arg = va_arg(args, void *);
 				if (arg != NULL)
 				{
 					if (sizeof(*((char*)arg)) == sizeof(char))
