@@ -35,7 +35,7 @@ int _printf(const char *format, ...)
 {
 	int i, len = 0, buf_idx, s_len;
 	va_list args;
-	char buf[1024], c_arg, *s_arg, int_buf[11];
+	char buf[1024], c_arg, *s_arg, int_buf[11], binary_buf[32];
 
 	va_start(args, format);
 	/*not used variabled*/
@@ -80,6 +80,15 @@ int _printf(const char *format, ...)
 				int_buf[0] = '\0';
 				len += int_to_string(va_arg(args, int), int_buf);
 				s_len = print_string(int_buf);
+				/*len += s_len;*/
+				i++;
+				continue;
+			}
+			else if (format[i + 1] == 'b')
+			{
+				binary_buf[0] = '\0';
+				len += int_to_binary(va_arg(args, int), binary_buf);
+				s_len = print_string(binary_buf);
 				/*len += s_len;*/
 				i++;
 				continue;
