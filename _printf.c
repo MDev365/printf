@@ -16,7 +16,8 @@ int int_to_string(int num, char *buf)
     
     if (num == 0)
     {
-        printf("0");
+        buf[0] = '0';
+        buf[1] = '\0';
         return(1);
     }
     if (num < 0)
