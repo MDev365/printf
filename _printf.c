@@ -18,7 +18,7 @@ int int_to_string(int num, char *buf)
 	{
 		buf[0] = '0';
 		buf[1] = '\0';
-		return(1);
+		return (1);
 	}
 	if (num < 0)
 	{
