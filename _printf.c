@@ -87,7 +87,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'b')
 			{
 				binary_buf[0] = '\0';
-				len += int_to_binary(va_arg(args, int), binary_buf);
+				len += int_to_binary(va_arg(args, unsigned int), binary_buf);
 				s_len = print_string(binary_buf);
 				/*len += s_len;*/
 				i++;
