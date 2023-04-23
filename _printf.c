@@ -124,8 +124,9 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
 			{
+				int_buf[0] = '\0';
 				len += int_to_string(va_arg(args, int), int_buf);
-				s_len = print_string(s_arg);
+				s_len = print_string(int_buf);
 				/*len += s_len;*/
 				i++;
 				continue;
