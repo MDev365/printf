@@ -11,42 +11,42 @@
  */
 int int_to_string(int num, char *buf)
 {
-    int c, len = 0, neg = 0, i, j = 0;
-    int digits_array[11];
-    
-    if (num == 0)
-    {
-        buf[0] = '0';
-        buf[1] = '\0';
-        return(1);
-    }
-    if (num < 0)
-    {
-        neg = 1;
-        num *= -1;
-    }
-    for (i = 0 ; num > 0 ; i++)
-    {
-        digits_array[i] = num % 10;
-        num = num / 10;
-        len++;
-    }
+	int c, len = 0, neg = 0, i, j = 0;
+	int digits_array[11];
 
-    if (neg == 1)
-    {
-        buf[j] = '-';
-        j++;
-    }
+	if (num == 0)
+	{
+		buf[0] = '0';
+		buf[1] = '\0';
+		return(1);
+	}
+	if (num < 0)
+	{
+		neg = 1;
+		num *= -1;
+	}
+	for (i = 0 ; num > 0 ; i++)
+	{
+		digits_array[i] = num % 10;
+		num = num / 10;
+		len++;
+	}
 
-    for (i = len - 1 ; i >= 0 ; i--)
-    {
-        buf[j] = digits_array[i] + '0';
-        j++;
-    }
+	if (neg == 1)
+	{
+		buf[j] = '-';
+		j++;
+	}
 
-    buf[j] = '\0';
+	for (i = len - 1 ; i >= 0 ; i--)
+	{
+		buf[j] = digits_array[i] + '0';
+		j++;
+	}
 
-    return (j);
+	buf[j] = '\0';
+
+	return (j);
 }
 
 
@@ -83,7 +83,7 @@ int _printf(const char *format, ...)
 {
 	int i, len = 0, buf_idx, s_len;
 	va_list args;
-	char buf[1024], c_arg, *s_arg;
+	char buf[1024], c_arg, *s_arg, int_buf[11];
 
 	va_start(args, format);
 	/*not used variabled*/
@@ -122,6 +122,15 @@ int _printf(const char *format, ...)
 				len++;
 				i++;
 				continue;
+			}
+			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
+			{
+				len += int_to_string(va_arg(args, int), int_buf);
+				s_len = print_string(s_arg);
+				/*len += s_len;*/
+				i++;
+				continue;
+				}
 			}
 		}
 			_putchar(format[i]);
