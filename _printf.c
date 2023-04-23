@@ -3,6 +3,53 @@
 #include <stdlib.h>
 
 /**
+ * int_to_string - convert int to string
+ * @num; the integer number
+ * @buf; number buffer
+ *
+ * Return: length of the string
+ */
+int int_to_string(int num, char *buf)
+{
+    int c, len = 0, neg = 0, i, j = 0;
+    int digits_array[11];
+    
+    if (num == 0)
+    {
+        printf("0");
+        return(1);
+    }
+    if (num < 0)
+    {
+        neg = 1;
+        num *= -1;
+    }
+    for (i = 0 ; num > 0 ; i++)
+    {
+        digits_array[i] = num % 10;
+        num = num / 10;
+        len++;
+    }
+
+    if (neg == 1)
+    {
+        buf[j] = '-';
+        j++;
+    }
+
+    for (i = len - 1 ; i >= 0 ; i--)
+    {
+        buf[j] = digits_array[i] + '0';
+        j++;
+    }
+
+    buf[j] = '\0';
+
+    return (j);
+}
+
+
+/**
  * print_string - print string
  * @s: string
  *
