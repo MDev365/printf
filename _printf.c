@@ -11,7 +11,7 @@
  */
 int int_to_string(int num, char *buf)
 {
-	int c, len = 0, neg = 0, i, j = 0;
+	int neg = 0, i, j = 0;
 	int digits_array[11];
 
 	if (num == 0)
@@ -29,7 +29,6 @@ int int_to_string(int num, char *buf)
 	{
 		digits_array[i] = num % 10;
 		num = num / 10;
-		len++;
 	}
 
 	if (neg == 1)
@@ -38,7 +37,7 @@ int int_to_string(int num, char *buf)
 		j++;
 	}
 
-	for (i = len - 1 ; i >= 0 ; i--)
+	for (; i >= 0 ; i--)
 	{
 		buf[j] = digits_array[i] + '0';
 		j++;
@@ -130,7 +129,6 @@ int _printf(const char *format, ...)
 				/*len += s_len;*/
 				i++;
 				continue;
-				}
 			}
 		}
 			_putchar(format[i]);
