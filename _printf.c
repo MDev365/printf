@@ -4,8 +4,8 @@
 
 /**
  * int_to_string - convert int to string
- * @num; the integer number
- * @buf; number buffer
+ * @num: the integer number
+ * @buf: number buffer
  *
  * Return: length of the string
  */
