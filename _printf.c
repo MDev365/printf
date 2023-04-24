@@ -12,9 +12,10 @@
 
 int print_address(void *p)
 {
-	int i, len = 0;
+	int i, len = 0, non_zero_digit_found = 0;
 	unsigned long addr = (unsigned long) p;
 	char hex[16] = "0123456789abcdef";
+	unsigned char digit;
 
 	if (p == NULL)
 		return (0);
@@ -24,8 +25,13 @@ int print_address(void *p)
 	len += 2;
     	for (i = sizeof(addr) * 2 - 5; i >= 0; i--)
 	{
-        	_putchar(hex[(addr >> (i * 4)) & 0xF]);
-		len++;
+		digit = (addr >> (i * 4)) & 0xF;
+		if (digit != 0 || non_zero_digit_found) 
+		{
+			non_zero_digit_found = 1;
+			_putchar(hex[digit]);
+			len++;
+		}
     	}
 
 	return (len);
