@@ -93,6 +93,15 @@ int _printf(const char *format, ...)
 				i++;
 				continue;
 			}
+			else if (format[i + 1] == 'o')
+			{
+				binary_buf[0] = '\0';
+				len += int_to_octal(va_arg(args, unsigned int), binary_buf);
+				s_len = print_string(binary_buf);
+				/*len += s_len;*/
+				i++;
+				continue;
+			}
 		}
 			_putchar(format[i]);
 			len++;
