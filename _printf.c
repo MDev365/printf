@@ -54,7 +54,7 @@ int print_string_non_print(char *s)
 
 	if (s == NULL)
 	{
-		return (0);
+		s = "(null)";
 	}
 
 	for (i = 0 ; s[i] != '\0' ; i++)
