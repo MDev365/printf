@@ -35,7 +35,7 @@ int print_string_non_print(char *s)
 				num = num / 16;
 			}
 
-			for (j = j - 1; j >= 0 ; j--)
+			for (j = 1 ; j >= 0 ; j--)
 			{
 				if (hex_c[j] < 10)
 				{
