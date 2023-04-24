@@ -3,6 +3,58 @@
 #include <stdlib.h>
 
 /**
+ * print_string_non_pint - print string Non printable characters (0 < ASCII value < 32 or >= 127)
+ * are printed this way: \x, followed by the ASCII code value in hexadecimal
+ * (upper case - always 2 characters)
+ * @s: string
+ *
+ * Return: lenght of the string
+ */
+
+int print_string_non_pint(char *s)
+{
+	int i, len = 0, j, hex_c[2] = {0 , 0}; 
+
+	if (s == NULL)
+	{
+		return (0);
+	}
+
+	for (i = 0 ; s[i] != '\0' ; i++)
+	{
+		/* (0 < ASCII value < 32 or >= 127) */
+		if ((s[i] > 0 && s[i] < 32) || s[i] >= 127)
+		{
+			_purchar('\\');
+			_putchar('x');
+			
+			for (j = 0 ; s[i] > 0 ; j++)
+			{
+				hex_c[j] = num % 16;
+				num = num / 16;
+			}
+
+			for (j = j - 1; j >= 0 ; j--)
+			{
+				if (hex_c[j] < 10)
+				{
+					_putchar(hex_c[j] + '0');
+				}
+				else if (hex_c[i] >= 10)
+				{
+						_putchar(hex_c[i] - 10) + 'A');
+				}
+				j++;
+			}
+			len += 4;
+		}
+		_putchar(s[i]);
+		len++;
+	}
+	return (i);
+}
+
+/**
  * print_string - print string
  * @s: string
  *
