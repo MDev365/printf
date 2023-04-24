@@ -13,7 +13,7 @@
 
 int print_string_non_pint(char *s)
 {
-	int i, len = 0, j, hex_c[2] = {0 , 0}; 
+	int i, len = 0, j, hex_c[2] = {0 , 0}, num; 
 
 	if (s == NULL)
 	{
@@ -25,11 +25,12 @@ int print_string_non_pint(char *s)
 		/* (0 < ASCII value < 32 or >= 127) */
 		if ((s[i] > 0 && s[i] < 32) || s[i] >= 127)
 		{
-			_purchar('\\');
+			_putchar('\\');
 			_putchar('x');
-			
-			for (j = 0 ; s[i] > 0 ; j++)
-			{
+
+			num = (int) s[i];
+			for (j = 0 ; num > 0 ; j++)
+			{	
 				hex_c[j] = num % 16;
 				num = num / 16;
 			}
@@ -42,9 +43,8 @@ int print_string_non_pint(char *s)
 				}
 				else if (hex_c[i] >= 10)
 				{
-						_putchar(hex_c[i] - 10) + 'A');
+					_putchar(hex_c[i] - 10) + 'A');
 				}
-				j++;
 			}
 			len += 4;
 		}
