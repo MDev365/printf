@@ -25,7 +25,7 @@ int print_string_non_print(char *s)
 		/* (0 < ASCII value < 32 or >= 127) */
 		if ((s[i] > 0 && s[i] < 32) || s[i] >= 127)
 		{
-			_putchar('\\');
+			_putchar('/\');
 			_putchar('x');
 
 			num = (int) s[i];
