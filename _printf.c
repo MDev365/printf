@@ -102,6 +102,15 @@ int _printf(const char *format, ...)
 				i++;
 				continue;
 			}
+			else if (format[i + 1] == 'u')
+			{
+				binary_buf[0] = '\0';
+				len += uint_to_string(va_arg(args, unsigned int), binary_buf);
+				s_len = print_string(binary_buf);
+				/*len += s_len;*/
+				i++;
+				continue;
+			}
 		}
 			_putchar(format[i]);
 			len++;
