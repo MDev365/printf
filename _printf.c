@@ -2,6 +2,36 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+
+/**
+ * print_address - print address
+ * @s: string
+ *
+ * Return: lenght of the string
+ */
+
+int print_address(void *p)
+{
+	int i, len = 0;
+	unsigned long long addr = (unsigned long long) p;
+
+	if (p == NULL)
+		return (0);
+
+   	_putchar('0');
+    	_putchar('x');
+	len += 2;
+    	for (int i = sizeof(addr) * 2 - 1; i >= 0; i--)
+	{
+        	_putchar(hex[(addr >> (i * 4)) & 0xF]);
+		len++;
+    	}
+
+	return (len);
+}
+
+
+
 /**
  * print_string_non_print - print string Non printable characters (0 < ASCII value < 32 or >= 127)
  * are printed this way: \x, followed by the ASCII code value in hexadecimal
@@ -191,6 +221,13 @@ int _printf(const char *format, ...)
 				binary_buf[0] = '\0';
 				len += int_to_hex(va_arg(args, unsigned int), binary_buf, 1);
 				s_len = print_string(binary_buf);
+				/*len += s_len;*/
+				i++;
+				continue;
+			}
+			else if (format[i + 1] == 'p')
+			{
+				len += print_address(va_arg(args, void *));
 				/*len += s_len;*/
 				i++;
 				continue;
