@@ -43,7 +43,7 @@ int print_string_non_print(char *s)
 				}
 				else if (hex_c[i] >= 10)
 				{
-					_putchar(hex_c[i] - 10) + 'A');
+					_putchar((hex_c[i] - 10) + 'A');
 				}
 			}
 			len += 4;
