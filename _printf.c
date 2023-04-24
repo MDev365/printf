@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * print_string_non_pint - print string Non printable characters (0 < ASCII value < 32 or >= 127)
+ * print_string_non_print - print string Non printable characters (0 < ASCII value < 32 or >= 127)
  * are printed this way: \x, followed by the ASCII code value in hexadecimal
  * (upper case - always 2 characters)
  * @s: string
@@ -11,7 +11,7 @@
  * Return: lenght of the string
  */
 
-int print_string_non_pint(char *s)
+int print_string_non_print(char *s)
 {
 	int i, len = 0, j, hex_c[2] = {0 , 0}, num; 
 
