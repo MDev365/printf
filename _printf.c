@@ -13,7 +13,7 @@
 int print_address(void *p)
 {
 	int i, len = 0;
-	unsigned long addr = (unsigned long long) p;
+	unsigned long addr = (unsigned long) p;
 	char hex[16] = "0123456789ABCDEF";
 
 	if (p == NULL)
