@@ -7,7 +7,7 @@
  *
  * Return: length of the string
  */
-int int_to_hex(unsigned int num, char *buf)
+int int_to_hex(unsigned int num, char *buf, int cap)
 {
 	int i, j = 0;
 	int digits_array[32];
@@ -33,7 +33,10 @@ int int_to_hex(unsigned int num, char *buf)
 		}
 		else if (digits_array[i] >= 10)
 		{
-			buf[j] = (digits_array[i] - 10) + 'A';
+			if (cap == 1)
+				buf[j] = (digits_array[i] - 10) + 'A';
+			else
+				buf[j] = (digits_array[i] - 10) + 'a';
 		}
 		j++;
 	}
