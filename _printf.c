@@ -95,6 +95,35 @@ int print_string_non_print(char *s)
 }
 
 /**
+ * print_reverse_string - print string
+ * @s: string
+ *
+ * Return: lenght of the string
+ */
+
+int print_reverse_string(char *s)
+{
+	int i, len;
+
+	if (s == NULL)
+	{
+		s = "(null)";
+	}
+
+	for (i = 0 ; s[i] != '\0' ; i++)
+	{
+	}
+	len = i;
+
+	for (i = i - 1 ; i >= 0 ; i--)
+	{
+		_putchar(s[i]);
+	}
+
+	return (len);
+}
+
+/**
  * print_string - print string
  * @s: string
  *
@@ -238,6 +267,17 @@ int _printf(const char *format, ...)
 				/*len += s_len;*/
 				i++;
 				continue;
+			}
+			else if (format[i + 1] == 'r')
+			{
+				s_arg = va_arg(args, char *);
+				if (s_arg)
+				{
+					s_len = print_reverse_string(s_arg);
+					len += s_len;
+					i++;
+					continue;
+				}
 			}
 		}
 			_putchar(format[i]);
