@@ -17,7 +17,7 @@ int print_address(void *p)
 	char hex[16] = "0123456789abcdef";
 	unsigned char digit;
 
-	if (p == NULL)
+	if (p == NULL || (sizeof(p) != sizeof(void *)))
 		return (print_string("(nil)"));
 
    	_putchar('0');
