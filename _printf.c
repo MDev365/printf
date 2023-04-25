@@ -18,7 +18,7 @@ int print_address(void *p)
 	unsigned char digit;
 
 	if (p == NULL)
-		return (0);
+		return (print_string("(nil)"));
 
    	_putchar('0');
     	_putchar('x');
