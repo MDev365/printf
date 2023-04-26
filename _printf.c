@@ -87,7 +87,7 @@ int get_precision(const char* s, int *precision, va_list args)
 }
 
 /**
- * get_lenth - get format flag
+ * get_length_modifier - get format flag
  * @s: format string
  * @length: flags struct
  *
