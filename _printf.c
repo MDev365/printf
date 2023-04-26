@@ -159,22 +159,16 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 's')
 			{
 				s_arg = va_arg(args, char *);
-				if (s_arg)
-				{
-					s_len = print_string(s_arg);
-					len += s_len;
-				}
+				s_len = print_string(s_arg);
+				len += s_len;
 				i++;
 				continue;
 			}
 			else if (format[i + 1] == 'S')
 			{
 				s_arg = va_arg(args, char *);
-				if (s_arg)
-				{
-					s_len = print_string_non_print(s_arg);
-					len += s_len;
-				}
+				s_len = print_string_non_print(s_arg);
+				len += s_len;
 				i++;
 				continue;
 			}
@@ -269,9 +263,12 @@ int _printf(const char *format, ...)
 				continue;
 			}
 		}
-		i = i_before;
-		_putchar(format[i]);
-		len++;
+		if (i != i_before)
+		{
+			i = i_before;
+			_putchar(format[i]);
+			len++;
+		}
 	}
 	return (len);
 }
