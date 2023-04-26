@@ -166,7 +166,7 @@ int int_to_binary(unsigned int num, char *buf)
 int int_to_string(int num, char *buf)
 {
 	int neg = 0, i, j = 0;
-	int digits_array[11];
+	int digits_array[12];
 
 	if (num == 0)
 	{
