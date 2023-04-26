@@ -268,7 +268,7 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			else if (format[i + 1] == '\0')
-				break;
+				return (-1);
 		}
 		i = i_before;
 		/* (void) i_before; */
