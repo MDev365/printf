@@ -9,7 +9,7 @@
 int get_conv_spec(const char *format, va_list args)
 {
 	int i = 0, len = 0, s_len;
-	char buf[1024], c_arg, *s_arg, int_buf[11], binary_buf[32];
+	char c_arg, *s_arg, int_buf[11], binary_buf[32];
 
 	if (format[i + 1] == 'c')
 	{
@@ -115,6 +115,7 @@ int get_conv_spec(const char *format, va_list args)
 int _printf(const char *format, ...)
 {
 	int i, len = 0, buf_idx, conve_spec_len;
+	char buf[1024];
 	va_list args;
 
 	va_start(args, format);
@@ -126,7 +127,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			conve_spec_len = get_conv_spec(format[i], args);
+			conve_spec_len = get_conv_spec(&format[i], args);
 			if (conve_spec_len > 0)
 			{
 				len += conve_spec_len;
