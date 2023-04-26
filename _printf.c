@@ -133,7 +133,7 @@ int _printf(const char *format, ...)
 		{
 			width = 0;
 			precision = 0;
-			length = '';
+			length = 0;
 			i += get_flags(&format[i + 1], &flags);
 			i += get_width(&format[i + 1], &width, args);
 			i += get_precision(&format[i + 1], &precision, args);
