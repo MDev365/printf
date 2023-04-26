@@ -130,6 +130,9 @@ int _printf(const char *format, ...)
 	(void) buf;
 	(void) buf_idx;
 
+	if (format == NULL)
+		return (0);
+
 	for (i = 0 ; format[i] != '\0' ; i++)
 	{
 		i_before = i;
