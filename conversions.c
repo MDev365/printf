@@ -4,7 +4,7 @@
  * int_to_hex - convert int to string
  * @num: the integer number
  * @buf: number buffer
- * @cap: (1) capital or otherwise small 
+ * @cap: (1) capital or otherwise small
  *
  * Return: length of the string
  */
