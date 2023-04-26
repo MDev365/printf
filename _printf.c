@@ -1,12 +1,12 @@
 #include "main.h"
 
-/* get_flag - get format flag
+/* get_flags - get format flag
  * @format: format string
  * @flags: flags struct
  *
  * Return: int
  */
-int get_flag(const char* s, flags_ty *flags)
+int get_flags(const char* s, flags_ty *flags)
 {
 	int i = 0;
 
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 	int i, len = 0, buf_idx, s_len;
 	va_list args;
 	char buf[1024], c_arg, *s_arg, int_buf[11], binary_buf[32];
-	flags_ty flags;
+	flags_ty flags = {0, 0, 0};
 
 	va_start(args, format);
 	/*not used variabled*/
