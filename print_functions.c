@@ -63,7 +63,8 @@ int print_string_non_print(char *s)
 			_putchar(92);
 			_putchar('x');
 
-			hex_c[] = {0, 0}
+			hex_c[0] = 0;
+			hex_c[1] = 0;
 			num = (int) s[i];
 			for (j = 0 ; num > 0 ; j++)
 			{
