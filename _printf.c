@@ -32,7 +32,7 @@ int get_flags(const char* s, flags_ty *flags)
  */
 int get_width(const char* s, int *width, va_list args)
 {
-	int i = 0, local_width = 0;
+	int i = 0;
 
 	if (s[i] == '*')
 	{
