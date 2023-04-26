@@ -73,7 +73,6 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			flags = {0, 0, 0};
 			width = 0;
 			i += get_flags(&format[i + 1], &flags);
 			i += get_width(&format[i + 1], &width, args);
