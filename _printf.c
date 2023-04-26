@@ -153,6 +153,11 @@ int _printf(const char *format, ...)
 					_putchar(c_arg);
 					len++;
 				}
+				else
+				{
+					_putchar(0);
+					len++;
+				}
 				i++;
 				continue;
 			}
@@ -262,9 +267,11 @@ int _printf(const char *format, ...)
 				i++;
 				continue;
 			}
+			else if (format[i + 1] == '\0')
+				break;
 		}
-		/* i = i_before; */
-		(void) i_before;
+		i = i_before;
+		/* (void) i_before; */
 		_putchar(format[i]);
 		len++;
 	}
