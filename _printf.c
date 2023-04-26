@@ -100,7 +100,6 @@ int print_string_non_print(char *s)
  *
  * Return: lenght of the string
  */
-
 int print_reverse_string(char *s)
 {
 	int i, len;
@@ -121,6 +120,48 @@ int print_reverse_string(char *s)
 	}
 
 	return (len);
+}
+
+/**
+ * print_reverse_string - print string
+ * @s: string
+ *
+ * Return: lenght of the string
+ */
+int print_rot13ed_string(char *s)
+{
+	int i, len;
+	
+
+	if (s == NULL)
+	{
+		s = "(null)";
+	}
+
+	
+	for (i = 0 ; s[i] != '\0' ; i++)
+	{
+		if (s[i] >='A' && s[i] <= 'Z')
+		{
+			if (s[i] + 13 > 'Z')
+				_putchar(s[i] - 13);
+			else
+				_putchar(s[i] + 13);
+		}
+		else if (s[i] >='a' && s[i] <= 'z')
+		{
+			if (s[i] + 13 > 'z')
+				_putchar(s[i] - 13);
+			else
+				_putchar(s[i] + 13);
+		}
+		else
+		{
+			_putchar(s[i]);
+		}
+	}
+
+	return (i);
 }
 
 /**
@@ -274,6 +315,17 @@ int _printf(const char *format, ...)
 				if (s_arg)
 				{
 					s_len = print_reverse_string(s_arg);
+					len += s_len;
+					i++;
+					continue;
+				}
+			}
+			else if (format[i + 1] == 'R')
+			{
+				s_arg = va_arg(args, char *);
+				if (s_arg)
+				{
+					s_len = print_rot13ed_string(s_arg);
 					len += s_len;
 					i++;
 					continue;
