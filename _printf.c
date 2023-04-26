@@ -263,12 +263,9 @@ int _printf(const char *format, ...)
 				continue;
 			}
 		}
-		if (i != i_before)
-		{
-			i = i_before;
+			/* i = i_before; */
 			_putchar(format[i]);
 			len++;
-		}
 	}
 	return (len);
 }
