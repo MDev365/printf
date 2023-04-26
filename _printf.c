@@ -130,7 +130,7 @@ int print_reverse_string(char *s)
  */
 int print_rot13ed_string(char *s)
 {
-	int i, len;
+	int i;
 	
 
 	if (s == NULL)
