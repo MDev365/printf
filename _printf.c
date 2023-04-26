@@ -1,7 +1,7 @@
 #include "main.h"
 
 /* get_flags - get format flag
- * @format: format string
+ * @s: format string
  * @flags: flags struct
  *
  * Return: int
@@ -20,6 +20,32 @@ int get_flags(const char* s, flags_ty *flags)
 			flags->hash += 1;
 		i++;
 	}
+	return (i);
+}
+
+/* get_width - get format flag
+ * @s: format string
+ * @width: flags struct
+ * @args: va_list args
+ *
+ * Return: int
+ */
+int get_width(const char* s, int *width, va_list args)
+{
+	int i = 0, local_width = 0;
+
+	if (s[i] == '*')
+	{
+		*width = va_arg(args, int);
+		return (1);
+	}
+	*width = 0;
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		*width = (*width * 10) + ((s[i]) - '0');
+		i++;
+	}
+
 	return (i);
 }
 
