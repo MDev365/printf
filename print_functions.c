@@ -1,6 +1,6 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdlib.h>
+
+
 /**
  * print_address - print address
  * @s: string
