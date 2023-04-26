@@ -32,7 +32,7 @@ int get_flags(const char *s, flags_ty *flags)
  *
  * Return: int
  */
-int get_width(const char* s, int *width, va_list args)
+int get_width(const char *s, int *width, va_list args)
 {
 	int i = 0;
 
@@ -60,7 +60,7 @@ int get_width(const char* s, int *width, va_list args)
  *
  * Return: int
  */
-int get_precision(const char* s, int *precision, va_list args)
+int get_precision(const char *s, int *precision, va_list args)
 {
 	int i = 0;
 
@@ -93,7 +93,7 @@ int get_precision(const char* s, int *precision, va_list args)
  *
  * Return: int
  */
-int get_length_modifier(const char* s, char *length)
+int get_length_modifier(const char *s, char *length)
 {
 	int i = 0;
 
