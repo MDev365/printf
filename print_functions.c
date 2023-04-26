@@ -3,7 +3,7 @@
 
 /**
  * print_address - print address
- * @s: string
+ * @p: pointer
  *
  * Return: lenght of the string
  */
@@ -24,7 +24,7 @@ int print_address(void *p)
 	for (i = sizeof(addr) * 2 - 5; i >= 0; i--)
 	{
 		digit = (addr >> (i * 4)) & 0xF;
-		if (digit != 0 || non_zero_digit_found) 
+		if (digit != 0 || non_zero_digit_found)
 		{
 			non_zero_digit_found = 1;
 			_putchar(hex[digit]);
@@ -38,8 +38,7 @@ int print_address(void *p)
 
 
 /**
- * print_string_non_print - print string Non printable characters 
- * (0 < ASCII value < 32 or >= 127)
+ * print_string_non_print - print string Non printable characters
  * are printed this way: \x, followed by the ASCII code value in hexadecimal
  * (upper case - always 2 characters)
  * @s: string
@@ -118,7 +117,7 @@ int print_reverse_string(char *s)
 }
 
 /**
- * print_reverse_string - print string
+ * print_rot13ed_string - print string
  * @s: string
  *
  * Return: lenght of the string
