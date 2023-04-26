@@ -131,6 +131,7 @@ int _printf(const char *format, ...)
 			if (conve_spec_len > 0)
 			{
 				len += conve_spec_len;
+				i++;
 				continue;
 			}
 		}
