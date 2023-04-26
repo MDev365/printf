@@ -167,6 +167,7 @@ int int_to_string(int num, char *buf)
 {
 	int neg = 0, i, j = 0;
 	int digits_array[20];
+	unsigned long int local_num;
 
 	if (num == 0)
 	{
@@ -177,12 +178,16 @@ int int_to_string(int num, char *buf)
 	if (num < 0)
 	{
 		neg = 1;
-		num *= -1;
+		local_num = (unsigned long int)(num * -1);
 	}
-	for (i = 0 ; num > 0 ; i++)
+	else
 	{
-		digits_array[i] = num % 10;
-		num = num / 10;
+		local_num = (unsigned long int)num;
+	}
+	for (i = 0 ; local_num > 0 ; i++)
+	{
+		digits_array[i] = local_num % 10;
+		local_num = local_num / 10;
 	}
 
 	if (neg == 1)
