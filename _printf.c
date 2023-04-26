@@ -263,9 +263,10 @@ int _printf(const char *format, ...)
 				continue;
 			}
 		}
-			/* i = i_before; */
-			_putchar(format[i]);
-			len++;
+		/* i = i_before; */
+		(void) i_before;
+		_putchar(format[i]);
+		len++;
 	}
 	return (len);
 }
