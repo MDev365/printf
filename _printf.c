@@ -50,6 +50,40 @@ int get_width(const char* s, int *width, va_list args)
 }
 
 
+/* get_width - get format flag
+ * @s: format string
+ * @width: flags struct
+ * @args: va_list args
+ *
+ * Return: int
+ */
+int get_precision(const char* s, int *precision, va_list args)
+{
+	int i = 0;
+
+	if (s[i] == '.')
+	{
+		i++;
+		if (s[i] == '*')
+		{
+			*precision = va_arg(args, int);
+			return (1);
+		}
+		*precision = 0;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			*precision = (*precision * 10) + ((s[i]) - '0');
+			i++;
+		}
+		return (i);
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+
 
 /**
  * _printf - printf replica
@@ -59,7 +93,7 @@ int get_width(const char* s, int *width, va_list args)
  */
 int _printf(const char *format, ...)
 {
-	int i, len = 0, buf_idx, s_len, width;
+	int i, len = 0, buf_idx, s_len, width, precision;
 	va_list args;
 	char buf[1024], c_arg, *s_arg, int_buf[11], binary_buf[32];
 	flags_ty flags = {0, 0, 0};
@@ -74,8 +108,10 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			width = 0;
+			precision = 0;
 			i += get_flags(&format[i + 1], &flags);
 			i += get_width(&format[i + 1], &width, args);
+			i += get_precision(&format[i + 1], &precision, args);
 			if (format[i + 1] == 'c')
 			{
 				c_arg = va_arg(args, int);
