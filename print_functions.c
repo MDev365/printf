@@ -21,7 +21,7 @@ int print_address(void *p)
 	_putchar('0');
 	_putchar('x');
 	len += 2;
-	for (i = sizeof(addr) * 2 - 5; i >= 0; i--)
+	for (i = sizeof(addr) * 2 - 1; i >= 0; i--)
 	{
 		digit = (addr >> (i * 4)) & 0xF;
 		if (digit != 0 || non_zero_digit_found)
