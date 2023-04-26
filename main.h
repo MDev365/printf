@@ -10,7 +10,7 @@ int print_address(void *p);
 int print_string_non_print(char *s);
 int print_reverse_string(char *s);
 int print_rot13ed_string(char *s);
-int print_string(char *s);  
+int print_string(char *s);
 
 /* conversions functions */
 int _strlen(const char *s);
