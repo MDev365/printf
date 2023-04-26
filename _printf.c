@@ -153,8 +153,8 @@ int _printf(const char *format, ...)
 					_putchar(c_arg);
 					i++;
 					len++;
-					continue;
 				}
+				continue;
 			}
 			else if (format[i + 1] == 's')
 			{
@@ -164,8 +164,8 @@ int _printf(const char *format, ...)
 					s_len = print_string(s_arg);
 					len += s_len;
 					i++;
-					continue;
 				}
+				continue;
 			}
 			else if (format[i + 1] == 'S')
 			{
@@ -175,8 +175,8 @@ int _printf(const char *format, ...)
 					s_len = print_string_non_print(s_arg);
 					len += s_len;
 					i++;
-					continue;
 				}
+				continue;
 			}
 			else if (format[i + 1] == '%')
 			{
