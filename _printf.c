@@ -151,9 +151,9 @@ int _printf(const char *format, ...)
 				if (c_arg)
 				{
 					_putchar(c_arg);
-					i++;
 					len++;
 				}
+				i++;
 				continue;
 			}
 			else if (format[i + 1] == 's')
@@ -163,8 +163,8 @@ int _printf(const char *format, ...)
 				{
 					s_len = print_string(s_arg);
 					len += s_len;
-					i++;
 				}
+				i++;
 				continue;
 			}
 			else if (format[i + 1] == 'S')
@@ -174,8 +174,8 @@ int _printf(const char *format, ...)
 				{
 					s_len = print_string_non_print(s_arg);
 					len += s_len;
-					i++;
 				}
+				i++;
 				continue;
 			}
 			else if (format[i + 1] == '%')
@@ -253,9 +253,9 @@ int _printf(const char *format, ...)
 				{
 					s_len = print_reverse_string(s_arg);
 					len += s_len;
-					i++;
-					continue;
 				}
+				i++;
+				continue;
 			}
 			else if (format[i + 1] == 'R')
 			{
@@ -264,9 +264,9 @@ int _printf(const char *format, ...)
 				{
 					s_len = print_rot13ed_string(s_arg);
 					len += s_len;
-					i++;
-					continue;
 				}
+				i++;
+				continue;
 			}
 		}
 		i = i_before;
