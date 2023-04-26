@@ -122,7 +122,7 @@ int _printf(const char *format, ...)
 	int i, i_before, len = 0, buf_idx, s_len, width, precision;
 	char length;
 	va_list args;
-	char buf[1024], c_arg, *s_arg, int_buf[11], binary_buf[32];
+	char buf[1024], c_arg, *s_arg, int_buf[12], binary_buf[32];
 	flags_ty flags = {0, 0, 0};
 
 	va_start(args, format);
