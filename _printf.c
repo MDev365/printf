@@ -1,12 +1,13 @@
 #include "main.h"
 
-/* get_flags - get format flag
+/**
+ * get_flags - get format flag
  * @s: format string
  * @flags: flags struct
  *
  * Return: int
  */
-int get_flags(const char* s, flags_ty *flags)
+int get_flags(const char *s, flags_ty *flags)
 {
 	int i = 0;
 
@@ -16,14 +17,15 @@ int get_flags(const char* s, flags_ty *flags)
 			flags->plus += 1;
 		else if (s[i] == ' ')
 			flags->space += 1;
-		else if(s[i] == '#')
+		else if (s[i] == '#')
 			flags->hash += 1;
 		i++;
 	}
 	return (i);
 }
 
-/* get_width - get format flag
+/**
+ * get_width - get format flag
  * @s: format string
  * @width: flags struct
  * @args: va_list args
@@ -50,7 +52,8 @@ int get_width(const char* s, int *width, va_list args)
 }
 
 
-/* get_precision - get format flag
+/**
+ * get_precision - get format flag
  * @s: format string
  * @precision: flags struct
  * @args: va_list args
@@ -83,7 +86,8 @@ int get_precision(const char* s, int *precision, va_list args)
 	}
 }
 
-/* get_lenth - get format flag
+/**
+ * get_lenth - get format flag
  * @s: format string
  * @length: flags struct
  *
