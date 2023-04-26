@@ -50,9 +50,9 @@ int get_width(const char* s, int *width, va_list args)
 }
 
 
-/* get_width - get format flag
+/* get_precision - get format flag
  * @s: format string
- * @width: flags struct
+ * @precision: flags struct
  * @args: va_list args
  *
  * Return: int
@@ -83,6 +83,28 @@ int get_precision(const char* s, int *precision, va_list args)
 	}
 }
 
+/* get_lenth - get format flag
+ * @s: format string
+ * @length: flags struct
+ *
+ * Return: int
+ */
+int get_length_modifier(const char* s, char *length)
+{
+	int i = 0;
+
+	if (s[i] == 'l')
+	{
+		*length = 'l';
+		return (1);
+	}
+	else if (s[i] == 'h')
+	{
+		*length = 'h';
+		return (1);
+	}
+	return (0);
+}
 
 
 /**
@@ -93,7 +115,7 @@ int get_precision(const char* s, int *precision, va_list args)
  */
 int _printf(const char *format, ...)
 {
-	int i, len = 0, buf_idx, s_len, width, precision;
+	int i, i_before, len = 0, buf_idx, s_len, width, precision, length;
 	va_list args;
 	char buf[1024], c_arg, *s_arg, int_buf[11], binary_buf[32];
 	flags_ty flags = {0, 0, 0};
@@ -105,13 +127,16 @@ int _printf(const char *format, ...)
 
 	for (i = 0 ; format[i] != '\0' ; i++)
 	{
+		i_before = i;
 		if (format[i] == '%')
 		{
 			width = 0;
 			precision = 0;
+			lenght = 0;
 			i += get_flags(&format[i + 1], &flags);
 			i += get_width(&format[i + 1], &width, args);
 			i += get_precision(&format[i + 1], &precision, args);
+			i += get_length_modifier(&format[i + 1], &length);
 			if (format[i + 1] == 'c')
 			{
 				c_arg = va_arg(args, int);
@@ -236,8 +261,9 @@ int _printf(const char *format, ...)
 				}
 			}
 		}
-			_putchar(format[i]);
-			len++;
+		i = i_before;
+		_putchar(format[i]);
+		len++;
 	}
 	return (len);
 }
