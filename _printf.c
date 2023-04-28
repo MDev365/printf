@@ -11,7 +11,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	i += get_precision(&format[i + 1], &precision, args);
 	i += get_length_modifier(&format[i + 1], &length);
 	i += get_conversion_specifier(&format[i + 1], &flags);
-	if (format[i + 1] == 'c')
+	if (format[i] == 'c')
 	{
 		c_arg = va_arg(args, int);
 		if (c_arg)
@@ -24,83 +24,73 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 			_putchar(0);
 			len++;
 		}
-		i++;
 	}
-	else if (format[i + 1] == 's')
+	else if (format[i] == 's')
 	{
 		s_arg = va_arg(args, char *);
 		s_len = print_string(s_arg, width, precision, &flags);
 		len += s_len;
-		i++;
 	}
-	else if (format[i + 1] == 'S')
+	else if (format[i] == 'S')
 	{
 		s_arg = va_arg(args, char *);
 		s_len = print_string_non_print(s_arg);
 		len += s_len;
-		i++;
 	}
-	else if (format[i + 1] == '%')
+	else if (format[i] == '%')
 	{
 		_putchar('%');
 		len++;
 		i++;
 	}
-	else if (format[i + 1] == 'i' || format[i + 1] == 'd')
+	else if (format[i] == 'i' || format[i] == 'd')
 	{
 		int_buf[0] = '\0';
-		len += int_to_string(va_arg(args, int), int_buf, &flags, precision);
-		s_len = print_numeric(int_buf, width, precision, &flags);
+		s_len = int_to_string(va_arg(args, int), int_buf, &flags, precision);
+		len += print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
-		i++;
 	}
-	else if (format[i + 1] == 'b')
+	else if (format[i] == 'b')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_binary(va_arg(args, unsigned int), binary_buf, &flags);
-		s_len = print_numeric(int_buf, width, precision, &flags);
+		s_len = int_to_binary(va_arg(args, unsigned int), binary_buf, &flags);
+		len += print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
-		i++;
 	}
-	else if (format[i + 1] == 'o')
+	else if (format[i] == 'o')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_octal(va_arg(args, unsigned int), binary_buf, &flags);
-		s_len = print_numeric(int_buf, width, precision, &flags);
+		s_len = int_to_octal(va_arg(args, unsigned int), binary_buf, &flags);
+		len += print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
-		i++;
 	}
-	else if (format[i + 1] == 'u')
+	else if (format[i] == 'u')
 	{
 		binary_buf[0] = '\0';
-		len += uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
-		s_len = print_numeric(int_buf, width, precision, &flags);
+		s_len = uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
+		len += print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
-		i++;
 	}
-	else if (format[i + 1] == 'x')
+	else if (format[i] == 'x')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 0, &flags);
-		s_len = print_numeric(int_buf, width, precision, &flags);
+		s_len = int_to_hex(va_arg(args, unsigned int), binary_buf, 0, &flags);
+		len += print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
-		i++;
 	}
-	else if (format[i + 1] == 'X')
+	else if (format[i] == 'X')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 1, &flags);
-		s_len = print_numeric(int_buf, width, precision, &flags);
+		s_len = int_to_hex(va_arg(args, unsigned int), binary_buf, 1, &flags);
+		len += print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
-		i++;
 	}
-	else if (format[i + 1] == 'p')
+	else if (format[i] == 'p')
 	{
 		len += print_address(va_arg(args, void *));
 		/*len += s_len;*/
-		i++;
 	}
-	else if (format[i + 1] == 'r')
+	else if (format[i] == 'r')
 	{
 		s_arg = va_arg(args, char *);
 		if (s_arg)
@@ -108,9 +98,8 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 			s_len = print_reverse_string(s_arg);
 			len += s_len;
 		}
-		i++;
 	}
-	else if (format[i + 1] == 'R')
+	else if (format[i] == 'R')
 	{
 		s_arg = va_arg(args, char *);
 		if (s_arg)
@@ -118,7 +107,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 			s_len = print_rot13ed_string(s_arg);
 			len += s_len;
 		}
-		i++;
 	}
 	*ind = i;
 	return (len);
