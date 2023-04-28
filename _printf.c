@@ -1,5 +1,17 @@
 #include "main.h"
-conversion specification
+
+int handle_conversion_specification(const char *format, va_list args)
+{
+	int i = 0, width = 0, precision = 0, length = 0;
+	flags_ty flags = {0, 0, 0};
+	char buf[1024], c_arg, *s_arg, int_buf[20], binary_buf[32];
+
+	i += get_flags(&format[i + 1], &flags);
+	i += get_width(&format[i + 1], &width, args);
+	i += get_precision(&format[i + 1], &precision, args);
+	i += get_length_modifier(&format[i + 1], &length);
+	
+}
 
 
 
