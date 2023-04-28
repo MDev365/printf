@@ -18,8 +18,8 @@ int main(void)
 	
 	i++;
 	_printf("\n============== %i ================\n", i);
-	_printf("%");
-	printf("%");
+	_printf("t%");
+	printf("m%");
 	
 	i++;
 	_printf("\n============== %i ================\n", i);
