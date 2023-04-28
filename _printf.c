@@ -49,7 +49,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	else if (format[i + 1] == 'i' || format[i + 1] == 'd')
 	{
 		int_buf[0] = '\0';
-		len += int_to_string(va_arg(args, int), int_buf);
+		len += int_to_string(va_arg(args, int), int_buf, &flags, precision);
 		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
@@ -57,7 +57,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	else if (format[i + 1] == 'b')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_binary(va_arg(args, unsigned int), binary_buf);
+		len += int_to_binary(va_arg(args, unsigned int), binary_buf, &flags);
 		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
@@ -65,7 +65,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	else if (format[i + 1] == 'o')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_octal(va_arg(args, unsigned int), binary_buf);
+		len += int_to_octal(va_arg(args, unsigned int), binary_buf, &flags);
 		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
@@ -73,7 +73,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	else if (format[i + 1] == 'u')
 	{
 		binary_buf[0] = '\0';
-		len += uint_to_string(va_arg(args, unsigned int), binary_buf);
+		len += uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
 		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
@@ -81,7 +81,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	else if (format[i + 1] == 'x')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 0);
+		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 0, &flags);
 		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
@@ -89,7 +89,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	else if (format[i + 1] == 'X')
 	{
 		binary_buf[0] = '\0';
-		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 1);
+		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 1, &flags);
 		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
