@@ -3,7 +3,6 @@
 
 int main(void)
 {
-	char *str;
 	int i = 3;
 	
 	
