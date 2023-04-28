@@ -25,7 +25,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 			len++;
 		}
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 's')
 	{
@@ -33,7 +32,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_string(s_arg, width, precision, flags);
 		len += s_len;
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'S')
 	{
@@ -41,14 +39,12 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_string_non_print(s_arg);
 		len += s_len;
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == '%')
 	{
 		_putchar('%');
 		len++;
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'i' || format[i + 1] == 'd')
 	{
@@ -57,7 +53,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_numeric(int_buf, width, precision, flags);
 		/*len += s_len;*/
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'b')
 	{
@@ -66,7 +61,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_numeric(int_buf, width, precision, flags);
 		/*len += s_len;*/
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'o')
 	{
@@ -75,7 +69,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_numeric(int_buf, width, precision, flags);
 		/*len += s_len;*/
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'u')
 	{
@@ -84,7 +77,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_numeric(int_buf, width, precision, flags);
 		/*len += s_len;*/
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'x')
 	{
@@ -93,7 +85,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_numeric(int_buf, width, precision, flags);
 		/*len += s_len;*/
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'X')
 	{
@@ -102,14 +93,12 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 		s_len = print_numeric(int_buf, width, precision, flags);
 		/*len += s_len;*/
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'p')
 	{
 		len += print_address(va_arg(args, void *));
 		/*len += s_len;*/
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'r')
 	{
@@ -120,7 +109,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 			len += s_len;
 		}
 		i++;
-		continue;
 	}
 	else if (format[i + 1] == 'R')
 	{
@@ -131,7 +119,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 			len += s_len;
 		}
 		i++;
-		continue;
 	}
 	*ind = i;
 	return (len);
