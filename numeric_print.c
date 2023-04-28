@@ -14,15 +14,15 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 	int i, j = 0, k, len, pre_diff = 0, width_diff = 0, null = 0, prefix = 0;
 
 	len = _strlen(s);
-	if ((s[0] == '0' && len == 1 && precision == 0) || s[0] = '\0')
+	if ((s[0] == '0' && len == 1 && precision == 0) || s[0] == '\0')
 	{
 		return (0);
 	}
 
 	/* check if there is sign or prefixes */
-	if(s[0] == '+' || s[0] == '-' || s[0] == ' ' || s[0] == '0')
+	if (s[0] == '+' || s[0] == '-' || s[0] == ' ' || s[0] == '0')
 		prefix = 1;
-	else if(s[1] == 'x' || s[1] == 'X')
+	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
 
 	/* ----- */
@@ -63,13 +63,12 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		}
 		else
 		{
-			
 			for (k = 0 ; k < width_diff ; k++)
 			{
 				if (flags->zero > 0)
 					_putchar('0');
 				else
-					_putchar(' ');	
+					_putchar(' ');
 			}
 			/* print prefix */
 			for (i = 0; i < prefix ; i++)
