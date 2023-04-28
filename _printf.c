@@ -29,7 +29,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	else if (format[i + 1] == 's')
 	{
 		s_arg = va_arg(args, char *);
-		s_len = print_string(s_arg, width, precision, flags);
+		s_len = print_string(s_arg, width, precision, &flags);
 		len += s_len;
 		i++;
 	}
@@ -50,7 +50,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	{
 		int_buf[0] = '\0';
 		len += int_to_string(va_arg(args, int), int_buf);
-		s_len = print_numeric(int_buf, width, precision, flags);
+		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
 	}
@@ -58,7 +58,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	{
 		binary_buf[0] = '\0';
 		len += int_to_binary(va_arg(args, unsigned int), binary_buf);
-		s_len = print_numeric(int_buf, width, precision, flags);
+		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
 	}
@@ -66,7 +66,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	{
 		binary_buf[0] = '\0';
 		len += int_to_octal(va_arg(args, unsigned int), binary_buf);
-		s_len = print_numeric(int_buf, width, precision, flags);
+		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
 	}
@@ -74,7 +74,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	{
 		binary_buf[0] = '\0';
 		len += uint_to_string(va_arg(args, unsigned int), binary_buf);
-		s_len = print_numeric(int_buf, width, precision, flags);
+		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
 	}
@@ -82,7 +82,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	{
 		binary_buf[0] = '\0';
 		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 0);
-		s_len = print_numeric(int_buf, width, precision, flags);
+		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
 	}
@@ -90,7 +90,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	{
 		binary_buf[0] = '\0';
 		len += int_to_hex(va_arg(args, unsigned int), binary_buf, 1);
-		s_len = print_numeric(int_buf, width, precision, flags);
+		s_len = print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 		i++;
 	}
