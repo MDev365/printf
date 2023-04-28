@@ -149,7 +149,7 @@ int _printf(const char *format, ...)
 			conv_len = handle_conversion_specification(format, args, &i);
 			len += conv_len;
 			printf("\ni after :%i", i);
-			printf("\conv_len :%i\n", conv_len);
+			printf("\nconv_len :%i\n", conv_len);
 			if (conv_len == 0 && format[i + 1] == '\0')
 				return (-1);
 		}
