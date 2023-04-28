@@ -179,13 +179,10 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 	if (precision == 0)
 		return (0);
 	else if (precision < len)
-	{
 		if (null == 1;)
 			len = 0;
 		else
 			len = precision;
-	}
-
 	if (width > len)
 	{
 		width_diff = width - len;
