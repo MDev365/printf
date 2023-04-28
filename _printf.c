@@ -152,7 +152,10 @@ int _printf(const char *format, ...)
 			{
 				i = i_before;
 				if (format[i + 1] == '\0')
+				{
+					printf("\nWTF");
 					return (-1);
+				}
 				if(format[i + 1] != '\0')
 				{
 					_putchar(format[i]);
