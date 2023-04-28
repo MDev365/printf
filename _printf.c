@@ -147,6 +147,7 @@ int _printf(const char *format, ...)
 			i_before = i;
 			conv_exist = handle_conversion_specification(format, args, &i, &conv_len);
 			len += conv_len;
+			printf("\n---%i---\n", conv_exist);
 			if (conv_exist == 0)
 			{
 				i = i_before;
