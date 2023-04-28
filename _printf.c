@@ -7,17 +7,11 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
 	char c_arg, *s_arg, int_buf[20], binary_buf[32], length;
 
-	printf("\n%i", i);
 	i += get_flags(&format[i + 1], &flags);
-	printf("\nflags: %i", i);
 	i += get_width(&format[i + 1], &width, args);
-	printf("\nwidth: %i", i);
 	i += get_precision(&format[i + 1], &precision, args);
-	printf("\nprecision: %i", i);
 	i += get_length_modifier(&format[i + 1], &length);
-	printf("\nlength: %i", i);
 	i += get_conversion_specifier(&format[i + 1], &flags);
-	printf("\ncon_sp: %i\n", i);
 	
 	if (format[i] == 'c')
 	{
@@ -145,11 +139,11 @@ int _printf(const char *format, ...)
 		i_before = i;
 		if (format[i] == '%')
 		{
-			printf("\ni befor:%i", i);
+			printf("\n=========== i befor:%i", i);
 			conv_len = handle_conversion_specification(format, args, &i);
 			len += conv_len;
-			printf("\ni after :%i", i);
-			printf("\nconv_len :%i\n", conv_len);
+			printf("\n========== i after :%i", i);
+			printf("\n ========= conv_len :%i\n", conv_len);
 			if (conv_len == 0 && format[i + 1] == '\0')
 				return (-1);
 		}
