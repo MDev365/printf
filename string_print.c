@@ -13,10 +13,14 @@ int print_address(void *p)
 	int i, len = 0, non_zero_digit_found = 0;
 	unsigned long addr = (unsigned long) p;
 	char hex[16] = "0123456789abcdef";
-	unsigned char digit;
+	unsigned char digit, nil[] = "(nil)";
 
 	if (p == NULL || (sizeof(p) != sizeof(void *)))
-		return (print_string("(nil)"));
+	{
+		for (i = 0 ; nil[i] != '\0' ; i++)
+			_putchar(nil[i]);
+		return (i);
+	}
 
 	_putchar('0');
 	_putchar('x');
@@ -177,10 +181,12 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 	}
 	len = _strlen(s);
 	if ((precision < len) && (precision >= 0))
+	{
 		if (null == 1)
 			len = 0;
 		else
 			len = precision;
+	}
 	if (width > len)
 	{
 		width_diff = width - len;
