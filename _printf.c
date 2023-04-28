@@ -147,13 +147,16 @@ int _printf(const char *format, ...)
 			i_before = i;
 			conv_exist = handle_conversion_specification(format, args, &i, &conv_len);
 			len += conv_len;
-			if (conv_exist == 0 && format[i + 1] == '\0')
-				return (-1);
-			if(conv_exist == 0 && format[i + 1] != '\0')
+			if (conv_exist == 0)
 			{
 				i = i_before;
-				_putchar(format[i]);
-				len++;
+				if (format[i + 1] == '\0')
+					return (-1);
+				if(format[i + 1] != '\0')
+				{
+					_putchar(format[i]);
+					len++;
+				}
 			}
 		}
 		else
