@@ -1,9 +1,9 @@
 #include "main.h"
 #include <stdio.h>
 
-int handle_conversion_specification(const char *format, va_list args, int *ind)
+int handle_conversion_specification(const char *format, va_list args, int *ind, int *conv_le)
 {
-	int i = *ind, width = 0, precision = -1, len = 0, s_len;
+	int i = *ind, width = 0, precision = -1, len = 0, s_len, conv_exist = 0;
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
 	char c_arg, *s_arg, int_buf[20], binary_buf[32], length;
 
@@ -109,8 +109,14 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 			len += s_len;
 		}
 	}
+	else if (format[i + 1] == '\0')
+		len = -1;
 	*ind = i;
-	return (len);
+	*conv_len = len;
+	
+	if (flags->specifier != 0)
+		conv_exist = 1;
+	return (conv_exist);
 }
 
 /**
@@ -121,7 +127,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
  */
 int _printf(const char *format, ...)
 {
-	int i, i_before, len = 0, buf_idx, conv_len = 0;
+	int i, i_before, len = 0, buf_idx, conv_len = 0, conv_exist;
 	va_list args;
 	char buf[1024];
 
@@ -136,15 +142,17 @@ int _printf(const char *format, ...)
 	for (i = 0 ; format[i] != '\0' ; i++)
 	{
 		conv_len = 0;
+		conv_exist = 0;
 		i_before = i;
 		if (format[i] == '%')
 		{
-			conv_len = handle_conversion_specification(format, args, &i);
+			conv_exist = handle_conversion_specification(format, args, &i, &conv_len);
 			len += conv_len;
-			if (conv_len == 0 && format[i + 1] == '\0')
+			if (conv_len == -1)
 				return (-1);
+			
 		}
-		if (conv_len == 0)
+		if (conv_exist == 0)
 		{
 			i = i_before;
 			/* (void) i_before; */
