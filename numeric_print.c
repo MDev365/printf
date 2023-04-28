@@ -33,7 +33,7 @@ void  print_width_diff(int width_diff, char c)
 
 /**
  * print_number - print number
- * @num: char *
+ * @s: char *
  *
  * Return: void
  */
