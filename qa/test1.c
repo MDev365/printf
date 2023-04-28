@@ -5,6 +5,7 @@
 int main(void)
 {
 	int i = 2;
+	long int l;
 	
 	i++;
 	printf("\n============== %i ================\n", i);
@@ -33,13 +34,15 @@ int main(void)
 	
 	i++;
 	printf("\n============== %i ================\n", i);
-	_printf("%d", INT_MAX + 1024);
-	printf("%d", INT_MAX + 1024);
+	l = INT_MAX + 1024;
+	_printf("%d", l);
+	printf("%d", l);
 	
 	i++;
 	printf("\n============== %i ================\n", i);
-	_printf("%d", INT_MIN - 1024);
-	printf("%d", INT_MIN - 1024);
+	l = INT_MIN - 1024
+	_printf("%d", l);
+	printf("%d", l);
 	
 	i++;
 	printf("\n============== %i ================\n", i);
@@ -83,13 +86,15 @@ int main(void)
 	
 	i++;
 	printf("\n============== %i ================\n", i);
-	_printf("%i", INT_MAX + 1024);
-	printf("%i", INT_MAX + 1024);
+	l = INT_MAX + 1024;
+	_printf("%i", l);
+	printf("%i", l);
 	
 	i++;
 	printf("\n============== %i ================\n", i);
-	_printf("%i", INT_MIN - 1024);
-	printf("%i", INT_MIN - 1024);
+	l = INT_MAX -+ 1024;
+	_printf("%i", l);
+	printf("%i", l);
 	
 	i++;
 	printf("\n============== %i ================\n", i);
