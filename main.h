@@ -12,6 +12,7 @@ typedef struct flags{
 	int hash;
 	int zero;
 	int minus;
+	char specifier;
 } flags_ty;
 
 /* std libs */
