@@ -19,21 +19,29 @@ typedef struct flags{
 #include <stdarg.h>
 #include <stdlib.h>
 
-/* putchar and print functions */
+/* putchar and print string functions */
 int _putchar(char c);
 int print_address(void *p);
 int print_string_non_print(char *s);
 int print_reverse_string(char *s);
 int print_rot13ed_string(char *s);
-int print_string(char *s);
+int print_string(char *s, int width, int precision, flags_ty *flags);
+
+/* print numeric functions */
+void  print_pre_diff(int pre_diff);
+void  print_width_diff(int width_diff, char c);
+void  print_number(char *s);
+int  print_prefix(char *s, int prefix_len);
+int print_numeric(char *s, int width, int precision, flags_ty *flags);
+
 
 /* conversions functions */
 int _strlen(const char *s);
-int int_to_string(int num, char *buf);
-int int_to_binary(unsigned int num, char *buf);
-int int_to_octal(unsigned int num, char *buf);
-int int_to_hex(unsigned int num, char *buf, int cap);
-int uint_to_string(unsigned int num, char *buf);
+int int_to_string(int num, char *buf, flags_ty *flags, int precision);
+int int_to_binary(unsigned int num, char *buf, flags_ty *flags);
+int int_to_octal(unsigned int num, char *buf, flags_ty *flags);
+int int_to_hex(unsigned int num, char *buf, int cap, flags_ty *flags);
+int uint_to_string(unsigned int num, char *buf, flags_ty *flags);
 
 /* get functions */
 int get_flags(const char *s, flags_ty *flags);
