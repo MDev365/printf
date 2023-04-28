@@ -145,8 +145,11 @@ int _printf(const char *format, ...)
 		i_before = i;
 		if (format[i] == '%')
 		{
+			printf("\ni befor:%i", i);
 			conv_len = handle_conversion_specification(format, args, &i);
 			len += conv_len;
+			printf("\ni after :%i", i);
+			printf("\conv_len :%i\n", conv_len);
 			if (conv_len == 0 && format[i + 1] == '\0')
 				return (-1);
 		}
