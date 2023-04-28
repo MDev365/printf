@@ -14,6 +14,23 @@ void  print_pre_diff(int pre_diff)
 	}
 }
 
+
+/**
+ * print_width_diff - print width_diff
+ * @width_diff: int
+ * @c: width diff char
+ *
+ * Return: void
+ */
+void  print_width_diff(int width_diff, char c)
+{
+	for (width_diff > 0 ; width_diff--)
+	{
+		_putchar(c);
+	}
+}
+
+
 /**
  * print_number - print number
  * @num: char *
@@ -23,6 +40,7 @@ void  print_pre_diff(int pre_diff)
 void  print_number(char *s)
 {
 	int i = 0;
+
 	while (s[i] != '\0')
 	{
 		_putchar(s[i]);
@@ -40,6 +58,7 @@ void  print_number(char *s)
 int  print_prefix(char *s, int prefix_len)
 {
 	int i = 0;
+
 	for (i = 0; i < prefix_len ; i++)
 	{
 		_putchar(s[i]);
@@ -85,36 +104,30 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		{
 			/* 1 print prefix */
 			j += print_prefix(s[j], prefix);
-
 			/* 2 print precision diff */
 			print_pre_diff(pre_diff);
-	
 			/* 3 print the number */
 			print_number(&s[j]);
-
 			/* 4 print width diff as ' ' */
-			for (k = 0 ; k < width_diff ; k++)
-			{
-				_putchar(' ');
-			}
+			print_width_diff(width_diff, ' ');
 			return (prefix + pre_diff + len + width_diff);
 		}
 		else
 		{
-			for (k = 0 ; k < width_diff ; k++)
+			if (flags->zero == 0 || precision >= 0)
 			{
-				if (flags->zero > 0)
-					_putchar('0');
-				else
-					_putchar(' ');
+				print_width_diff(width_diff, ' ');
 			}
-
 			/* 1 print prefix */
 			j += print_prefix(s[j], prefix);
 
+			if (flags->zero > 0 || precision < 0)
+			{
+				print_width_diff(width_diff, '0');
+			}
+
 			/* 2 print precision diff */
 			print_pre_diff(pre_diff
-
 			/* 3 print the number */
 			print_number(&s[i]);
 			return (prefix + pre_diff + len + width_diff);
