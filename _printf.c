@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 int handle_conversion_specification(const char *format, va_list args, int *ind)
 {
@@ -6,12 +7,13 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
 	char c_arg, *s_arg, int_buf[20], binary_buf[32], length;
 
+	printf("\n%i", i);
 	i += get_flags(&format[i + 1], &flags);
 	i += get_width(&format[i + 1], &width, args);
 	i += get_precision(&format[i + 1], &precision, args);
 	i += get_length_modifier(&format[i + 1], &length);
 	i += get_conversion_specifier(&format[i + 1], &flags);
-	i++;
+	printf("\n%i", i);	
 	if (format[i] == 'c')
 	{
 		c_arg = va_arg(args, int);
