@@ -84,7 +84,7 @@ int get_precision(const char *s, int *precision, va_list args)
 	}
 	else
 	{
-		return (0);
+		return (-1);
 	}
 }
 
