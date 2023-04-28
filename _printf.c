@@ -4,7 +4,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 {
 	int i = *ind, width = 0, precision = -1, len = 0, s_len;
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
-	char buf[1024], c_arg, *s_arg, int_buf[20], binary_buf[32], length;
+	char c_arg, *s_arg, int_buf[20], binary_buf[32], length;
 
 	i += get_flags(&format[i + 1], &flags);
 	i += get_width(&format[i + 1], &width, args);
