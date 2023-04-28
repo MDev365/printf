@@ -2,15 +2,23 @@
 
 int handle_conversion_specification(const char *format, va_list args)
 {
-	int i = 0, width = 0, precision = 0, length = 0;
-	flags_ty flags = {0, 0, 0, 0, 0};
+	int i = 0, width = 0, precision = -1, length = 0;
+	flags_ty flags = {0, 0, 0, 0, 0, 0};
 	char buf[1024], c_arg, *s_arg, int_buf[20], binary_buf[32];
 
 	i += get_flags(&format[i + 1], &flags);
 	i += get_width(&format[i + 1], &width, args);
 	i += get_precision(&format[i + 1], &precision, args);
 	i += get_length_modifier(&format[i + 1], &length);
+	i += get_conversion_specifier(&format[i + 1], &flags);
 	
+}
+
+void handle_width(char *s, int width, flags_ty *flags)
+{
+	int i = 0;
+
+	_strlen(s);
 }
 
 
@@ -27,7 +35,7 @@ int _printf(const char *format, ...)
 	char length;
 	va_list args;
 	char buf[1024], c_arg, *s_arg, int_buf[20], binary_buf[32];
-	flags_ty flags = {0, 0, 0, 0, 0};
+	flags_ty flags = {0, 0, 0, 0, 0, 0};
 
 	va_start(args, format);
 	/*not used variabled*/
