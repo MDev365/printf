@@ -89,7 +89,6 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		prefix = 1;
 	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
-
 	len -= prefix;
 	if (precision > len)
 	{
