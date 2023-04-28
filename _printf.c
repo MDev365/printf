@@ -9,11 +9,16 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 
 	printf("\n%i", i);
 	i += get_flags(&format[i + 1], &flags);
+	printf("\nflags: %i", i);
 	i += get_width(&format[i + 1], &width, args);
+	printf("\nwidth: %i", i);
 	i += get_precision(&format[i + 1], &precision, args);
+	printf("\nprecision: %i", i);
 	i += get_length_modifier(&format[i + 1], &length);
+	printf("\nlength: %i", i);
 	i += get_conversion_specifier(&format[i + 1], &flags);
-	printf("\n%i", i);	
+	printf("\ncon_sp: %i", i);
+	
 	if (format[i] == 'c')
 	{
 		c_arg = va_arg(args, int);
