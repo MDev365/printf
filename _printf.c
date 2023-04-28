@@ -11,6 +11,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	i += get_precision(&format[i + 1], &precision, args);
 	i += get_length_modifier(&format[i + 1], &length);
 	i += get_conversion_specifier(&format[i + 1], &flags);
+	i++;
 	if (format[i] == 'c')
 	{
 		c_arg = va_arg(args, int);
