@@ -84,14 +84,12 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 	{
 		return (0);
 	}
-
 	/* check if there is sign or prefixes */
 	if (s[0] == '+' || s[0] == '-' || s[0] == ' ' || s[0] == '0')
 		prefix = 1;
 	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
 
-	/* ----- */
 	len -= prefix;
 	if (precision > len)
 	{
@@ -102,33 +100,20 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		width_diff = width - (len + pre_diff + prefix);
 		if (flags->minus > 0)
 		{
-			/* 1 print prefix */
 			j += print_prefix(s[j], prefix);
-			/* 2 print precision diff */
 			print_pre_diff(pre_diff);
-			/* 3 print the number */
 			print_number(&s[j]);
-			/* 4 print width diff as ' ' */
 			print_width_diff(width_diff, ' ');
 			return (prefix + pre_diff + len + width_diff);
 		}
 		else
 		{
 			if (flags->zero == 0 || precision >= 0)
-			{
 				print_width_diff(width_diff, ' ');
-			}
-			/* 1 print prefix */
 			j += print_prefix(s[j], prefix);
-
 			if (flags->zero > 0 || precision < 0)
-			{
 				print_width_diff(width_diff, '0');
-			}
-
-			/* 2 print precision diff */
-			print_pre_diff(pre_diff
-			/* 3 print the number */
+			print_pre_diff(pre_diff);
 			print_number(&s[i]);
 			return (prefix + pre_diff + len + width_diff);
 		}
