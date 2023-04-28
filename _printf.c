@@ -43,7 +43,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	{
 		_putchar('%');
 		len++;
-		i++;
 	}
 	else if (format[i] == 'i' || format[i] == 'd')
 	{
