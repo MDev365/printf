@@ -136,14 +136,12 @@ int _printf(const char *format, ...)
 
 	for (i = 0 ; format[i] != '\0' ; i++)
 	{
+		conv_len == 0;
 		i_before = i;
 		if (format[i] == '%')
 		{
-			printf("\n =========== i befor:%i", i);
 			conv_len = handle_conversion_specification(format, args, &i);
 			len += conv_len;
-			printf("\n ========== i after :%i", i);
-			printf("\n ========= conv_len :%i\n", conv_len);
 			if (conv_len == 0 && format[i + 1] == '\0')
 				return (-1);
 		}
