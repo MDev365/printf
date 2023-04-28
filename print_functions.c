@@ -175,60 +175,42 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 		s = "(null)";
 		null = 1;
 	}
-
 	len = _strlen(s);
-
-	if (flags->specifier == 's')
+	if (precision == 0)
+		return (0);
+	else if (precision < len)
 	{
-		if (precision == 0)
-		{
-			return(0);
-		}
-		else if(precision < len)
-		{
-			if (null == 1;)
-				len = 0;
-			else
-				len = precision;
-		}
+		if (null == 1;)
+			len = 0;
+		else
+			len = precision;
+	}
 
-		if (width > len)
+	if (width > len)
+	{
+		width_diff = width - len;
+		if (flags->minus > 0)
 		{
-			width_diff = width - len;
-			if (flags->minus > 0)
-			{
-				for (i = 0 ; i < len ; i++)
-				{
-					_putchar(s[i]);
-				}
-				for (j = 0 ; j < width_diff ; j++)
-				{
-					_putchar(' ');
-				}
-				return (i + j);
-			}
-			else
-			{
-				for (j = 0 ; j < width_diff ; j++)
-				{
-					_putchar(' ');
-				}
-				for (i = 0 ; i < len ; i++)
-				{
-					_putchar(s[i]);
-				}
-				
-				return (i + j);
-			}
+			for (i = 0 ; i < len ; i++)
+				_putchar(s[i]);
+			for (j = 0 ; j < width_diff ; j++)
+				_putchar(' ');
+			return (i + j);
 		}
 		else
 		{
+			for (j = 0 ; j < width_diff ; j++)
+				_putchar(' ');
 			for (i = 0 ; i < len ; i++)
-			{
 				_putchar(s[i]);
-			}
-			return (i);
+			return (i + j);
 		}
+	}
+	else
+	{
+		for (i = 0 ; i < len ; i++)
+			_putchar(s[i]);
+		return (i);
 	}
 }
 
