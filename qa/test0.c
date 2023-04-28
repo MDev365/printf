@@ -96,5 +96,5 @@ int main(void)
 	_printf("%K\n");
 	printf("%K\n");
 	
-	
+	return (1);
 }
