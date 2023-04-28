@@ -32,6 +32,11 @@ int int_to_octal(unsigned int num, char *buf);
 int int_to_hex(unsigned int num, char *buf, int cap);
 int uint_to_string(unsigned int num, char *buf);
 
+/* get functions */
+int get_flags(const char *s, flags_ty *flags);
+int get_width(const char *s, int *width, va_list args);
+int get_precision(const char *s, int *precision, va_list args);
+int get_length_modifier(const char *s, char *length);
 
 int _printf(const char *format, ...);
 #endif
