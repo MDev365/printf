@@ -164,15 +164,50 @@ int print_rot13ed_string(char *s)
  * Return: lenght of the string
  */
 
-int print_string(char *s)
+int print_string(char *s, int width, int precision, flags_ty *flags)
 {
-	int i;
+	int i, len, pre_diff, width_diff;
 
 	if (s == NULL)
 	{
 		s = "(null)";
 	}
 
+	len = _strlen(s);
+	if (precision >= 0)
+	{
+		if (flags->specifier == 's')
+		{
+			if (precision == 0)
+			{
+				return(0);
+			}
+			if(precision <= len)
+			{
+				for (i = 0 ; s[i] != '\0' && i != (precision - 1) ; i++)
+				{
+					_putchar(s[i]);
+				}
+				return (i);				
+			}
+		}
+		else
+		{
+			if (s[0] == '0' && len == 1 && precision == 0)
+			{
+				return (0);
+			}
+
+			if (precision > len)
+			{
+				pre_diff = precision - len
+			}
+			
+		}
+		   
+	}
+	
+	
 	for (i = 0 ; s[i] != '\0' ; i++)
 	{
 		_putchar(s[i]);
