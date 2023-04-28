@@ -77,7 +77,7 @@ int  print_prefix(char *s, int prefix_len)
  */
 int print_numeric(char *s, int width, int precision, flags_ty *flags)
 {
-	int i, j = 0, len, pre_diff = 0, width_diff = 0, prefix = 0;
+	int j = 0, len, pre_diff = 0, width_diff = 0, prefix = 0;
 
 	len = _strlen(s);
 	if ((s[0] == '0' && len == 1 && precision == 0) || s[0] == '\0')
@@ -113,7 +113,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 			if (flags->zero > 0 || precision < 0)
 				print_width_diff(width_diff, '0');
 			print_pre_diff(pre_diff);
-			print_number(&s[i]);
+			print_number(&s[j]);
 			return (prefix + pre_diff + len + width_diff);
 		}
 	}
