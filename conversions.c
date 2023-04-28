@@ -196,8 +196,6 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 
 	if (num == 0)
 	{
-		printf("---this is zero---\n");
-		buf[j] = '0';
 		if (precision == 0)
 		{
 			if (flags->plus > 0)
@@ -210,6 +208,11 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 				buf[j] = ' ';
 				j++;
 			}
+		}
+		else
+		{
+			buf[j] = '0';
+			j++;
 		}
 		buf[j] = '\0';
 		return (1);
