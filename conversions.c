@@ -185,7 +185,7 @@ int int_to_binary(unsigned int num, char *buf, flags_ty *flags)
  *
  * Return: length of the string
  */
-int int_to_string(int num, char *buf, flags_ty *flags)
+int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 {
 	int neg = 0, i, j = 0;
 	int digits_array[20];
@@ -193,11 +193,24 @@ int int_to_string(int num, char *buf, flags_ty *flags)
 
 	if (num == 0)
 	{
-		buf[0] = '0';
-		buf[1] = '\0';
-		return (1);
+		buf[j] = '0';
+		if (precision == 0)
+		{
+			if (flags->plus > 0)
+			{
+				buf[j] = '+';
+				j++;
+			}
+			else if (flass->space > 0)
+			{
+				buf[j] = ' ';
+				j++;
+			}
+			buf[j] = '\0';
+			return (1);
+		}
 	}
-	if (num < 0)
+	else if (num < 0)
 	{
 		neg = 1;
 		local_num = (unsigned int)(num * -1);
@@ -206,18 +219,32 @@ int int_to_string(int num, char *buf, flags_ty *flags)
 	{
 		local_num = (unsigned int)num;
 	}
+
+	/* convert number into array of digits */
 	for (i = 0 ; local_num > 0 ; i++)
 	{
 		digits_array[i] = local_num % 10;
 		local_num = local_num / 10;
 	}
 
+	/*check for negative and flags */
 	if (neg == 1)
 	{
 		buf[j] = '-';
 		j++;
 	}
+	else if (flags->plus > 1)
+	{
+		buf[j] = '+';
+		j++;
+	}
+	else if (flags->space > 1)
+	{
+		buf[j] = ' ';
+		j++;
+	}
 
+	/* convert digits into string */
 	for (i = i - 1; i >= 0 ; i--)
 	{
 		buf[j] = digits_array[i] + '0';
