@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * get_flags - get format flag
  * @s: format string
