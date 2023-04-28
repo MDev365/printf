@@ -85,7 +85,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		return (0);
 	}
 	/* check if there is sign or prefixes */
-	if (s[0] == '+' || s[0] == '-' || s[0] == ' ')
+	if (s[0] == '+' || s[0] == '-' || s[0] == ' ' || s[0] == '0')
 		prefix = 1;
 	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
