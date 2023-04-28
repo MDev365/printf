@@ -147,6 +147,7 @@ int main(void)
 	printf("%i", 10000);
 	
 	
+	printf("\n");
 	
 	return (1);
 }
