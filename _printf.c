@@ -109,8 +109,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 			len += s_len;
 		}
 	}
-	else if (format[i + 1] == '\0')
-		len = -1;
+
 	*ind = i;
 	*conv_len = len;
 	
@@ -148,7 +147,7 @@ int _printf(const char *format, ...)
 		{
 			conv_exist = handle_conversion_specification(format, args, &i, &conv_len);
 			len += conv_len;
-			if (conv_len == -1)
+			if (conv_exist == 0 && format[i + 1] == '\0')
 				return (-1);
 			
 		}
