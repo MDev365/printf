@@ -176,9 +176,7 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 		null = 1;
 	}
 	len = _strlen(s);
-	if (precision == 0)
-		return (0);
-	else if (precision < len)
+	if (precision < len)
 		if (null == 1;)
 			len = 0;
 		else
