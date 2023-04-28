@@ -87,12 +87,18 @@ int main(void)
 	_printf("%c", '\0');
 	printf("%c", '\0');
 	
+	i++;
+	_printf("\n============== %i ================\n", i);
 	_printf("%");
 	printf("%");
 	
+	i++;
+	_printf("\n============== %i ================\n", i);
 	_printf("%!\n");
 	printf("%!\n");
 	
+	i++;
+	_printf("\n============== %i ================\n", i);
 	_printf("%K\n");
 	printf("%K\n");
 	
