@@ -111,3 +111,46 @@ int get_length_modifier(const char *s, char *length)
 	}
 	return (0);
 }
+
+/**
+ * get_conversion_specifier - get get conversion specifier
+ * @s: format string
+ * @flags: flags struct
+ *
+ * Return: int
+ */
+int get_conversion_specifier(const char *s, flags_ty *flags)
+{
+	int i = 0;
+
+	if (s[i] == 'c')
+		flags->specifier = 'c';
+	else if (s[i] == 's')
+		flags->specifier = 's';
+	else if (s[i] == 'S')
+		flags->specifier = 'S';
+	else if (s[i] == '%')
+		flags->specifier = '%';
+	else if (s[i] == 'i' || s[i] == 'd')
+		flags->specifier = 'i';
+	else if (s[i] == 'b')
+		flags->specifier = 'b';
+	else if (s[i] == 'o')
+		flags->specifier = 'o';
+	else if (s[i] == 'u')
+		flags->specifier = 'u';
+	else if (s[i] == 'x')
+		flags->specifier = 'x';
+	else if (s[i] == 'X')
+		flags->specifier = 'X';
+	else if (s[i] == 'p')
+		flags->specifier = 'p';
+	else if (s[i] == 'r')
+		flags->specifier = 'r';
+	else if (s[i] == 'R')
+		flags->specifier = 'R';
+	else
+		return (0);
+
+	return (1);
+}
