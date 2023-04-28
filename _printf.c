@@ -114,7 +114,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 	*ind = i;
 	*conv_len = len;
 	
-	if (flags->specifier != 0)
+	if (flags.specifier != 0)
 		conv_exist = 1;
 	return (conv_exist);
 }
