@@ -17,7 +17,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind)
 	i += get_length_modifier(&format[i + 1], &length);
 	printf("\nlength: %i", i);
 	i += get_conversion_specifier(&format[i + 1], &flags);
-	printf("\ncon_sp: %i", i);
+	printf("\ncon_sp: %i\n", i);
 	
 	if (format[i] == 'c')
 	{
