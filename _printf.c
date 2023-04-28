@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 
-int handle_conversion_specification(const char *format, va_list args, int *ind, int *conv_le)
+int handle_conversion_specification(const char *format, va_list args, int *ind, int *conv_len)
 {
 	int i = *ind, width = 0, precision = -1, len = 0, s_len, conv_exist = 0;
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
