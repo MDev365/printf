@@ -136,7 +136,7 @@ int _printf(const char *format, ...)
 
 	for (i = 0 ; format[i] != '\0' ; i++)
 	{
-		conv_len == 0;
+		conv_len = 0;
 		i_before = i;
 		if (format[i] == '%')
 		{
