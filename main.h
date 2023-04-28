@@ -48,6 +48,7 @@ int get_flags(const char *s, flags_ty *flags);
 int get_width(const char *s, int *width, va_list args);
 int get_precision(const char *s, int *precision, va_list args);
 int get_length_modifier(const char *s, char *length);
+int get_conversion_specifier(const char *s, flags_ty *flags);
 
 int _printf(const char *format, ...);
 #endif
