@@ -5,10 +5,11 @@
  * @num: the integer number
  * @buf: number buffer
  * @cap: (1) capital or otherwise small
+ * @flags: flags
  *
  * Return: length of the string
  */
-int int_to_hex(unsigned int num, char *buf, int cap)
+int int_to_hex(unsigned int num, char *buf, int cap, flags_ty *flags)
 {
 	int i, j = 0;
 	int digits_array[32];
@@ -24,6 +25,17 @@ int int_to_hex(unsigned int num, char *buf, int cap)
 	{
 		digits_array[i] = num % 16;
 		num = num / 16;
+	}
+
+	if (flags->hash > 0)
+	{
+		buf[j] = '0';
+		j++;
+		if (cap == 1)
+			buf[j] = 'X';
+		else
+			buf[j] = 'x';
+		j++;
 	}
 
 	for (i = i - 1; i >= 0 ; i--)
@@ -52,10 +64,11 @@ int int_to_hex(unsigned int num, char *buf, int cap)
  * uint_to_string - convert int to string
  * @num: the integer number
  * @buf: number buffer
+ * @flags: flags
  *
  * Return: length of the string
  */
-int uint_to_string(unsigned int num, char *buf)
+int uint_to_string(unsigned int num, char *buf, flags_ty *flags)
 {
 	int i, j = 0;
 	int digits_array[32];
@@ -88,10 +101,11 @@ int uint_to_string(unsigned int num, char *buf)
  * int_to_octal - convert int to string
  * @num: the integer number
  * @buf: number buffer
+ * @flags: flags
  *
  * Return: length of the string
  */
-int int_to_octal(unsigned int num, char *buf)
+int int_to_octal(unsigned int num, char *buf, flags_ty *flags)
 {
 	int i, j = 0;
 	int digits_array[32];
@@ -109,6 +123,12 @@ int int_to_octal(unsigned int num, char *buf)
 		num = num / 8;
 	}
 
+	if (flags->hash > 0)
+	{
+		buf[j] = '0';
+		j++;
+	}
+
 	for (i = i - 1; i >= 0 ; i--)
 	{
 		buf[j] = digits_array[i] + '0';
@@ -124,10 +144,11 @@ int int_to_octal(unsigned int num, char *buf)
  * int_to_binary - convert int to string
  * @num: the integer number
  * @buf: number buffer
+ * @flags: flags
  *
  * Return: length of the string
  */
-int int_to_binary(unsigned int num, char *buf)
+int int_to_binary(unsigned int num, char *buf, flags_ty *flags)
 {
 	int i, j = 0;
 	int digits_array[32];
@@ -160,10 +181,11 @@ int int_to_binary(unsigned int num, char *buf)
  * int_to_string - convert int to string
  * @num: the integer number
  * @buf: number buffer
+ * @flags: flags
  *
  * Return: length of the string
  */
-int int_to_string(int num, char *buf)
+int int_to_string(int num, char *buf, flags_ty *flags)
 {
 	int neg = 0, i, j = 0;
 	int digits_array[20];
