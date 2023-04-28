@@ -208,9 +208,9 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 				buf[j] = ' ';
 				j++;
 			}
-			buf[j] = '\0';
-			return (1);
 		}
+		buf[j] = '\0';
+		return (1);
 	}
 	else if (num < 0)
 	{
