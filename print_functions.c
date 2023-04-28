@@ -160,57 +160,167 @@ int print_rot13ed_string(char *s)
 /**
  * print_string - print string
  * @s: string
+ * @width: width
+ * @precision: precision
+ * @flags: flags
  *
  * Return: lenght of the string
  */
-
 int print_string(char *s, int width, int precision, flags_ty *flags)
 {
-	int i, len, pre_diff, width_diff;
+	int i, j, len, width_diff, null = 0;
 
 	if (s == NULL)
 	{
 		s = "(null)";
+		null = 1;
 	}
 
 	len = _strlen(s);
-	if (precision >= 0)
+
+	if (flags->specifier == 's')
 	{
-		if (flags->specifier == 's')
+		if (precision == 0)
 		{
-			if (precision == 0)
+			return(0);
+		}
+		else if(precision < len)
+		{
+			if (null == 1;)
+				len = 0;
+			else
+				len = precision;
+		}
+
+		if (width > len)
+		{
+			width_diff = width - len;
+			if (flags->minus > 0)
 			{
-				return(0);
-			}
-			if(precision <= len)
-			{
-				for (i = 0 ; s[i] != '\0' && i != (precision - 1) ; i++)
+				for (i = 0 ; i < len ; i++)
 				{
 					_putchar(s[i]);
 				}
-				return (i);				
+				for (j = 0 ; j < width_diff ; j++)
+				{
+					_putchar(' ');
+				}
+				return (i + j);
+			}
+			else
+			{
+				for (j = 0 ; j < width_diff ; j++)
+				{
+					_putchar(' ');
+				}
+				for (i = 0 ; i < len ; i++)
+				{
+					_putchar(s[i]);
+				}
+				
+				return (i + j);
 			}
 		}
 		else
 		{
-			if (s[0] == '0' && len == 1 && precision == 0)
+			for (i = 0 ; i < len ; i++)
 			{
-				return (0);
+				_putchar(s[i]);
+			}
+			return (i);
+		}
+	}
+}
+
+/**
+ * print_numeric - print string
+ * @s: string
+ * @width: width
+ * @precision: precision
+ * @flags: flags
+ *
+ * Return: lenght of the string
+ */
+int print_numeric(char *s, int width, int precision, flags_ty *flags)
+{
+	int i, j = 0, k, len, pre_diff = 0, width_diff = 0, null = 0, prefix = 0;
+
+	len = _strlen(s);
+	if ((s[0] == '0' && len == 1 && precision == 0) || s[0] = '\0')
+	{
+		return (0);
+	}
+
+	/* check if there is sign or prefixes */
+	if(s[0] == '+' || s[0] == '-' || s[0] == ' ' || s[0] == '0')
+		prefix = 1;
+	else if(s[1] == 'x' || s[1] == 'X')
+		prefix = 2;
+
+	/* ----- */
+	len -= prefix;
+	if (precision > len)
+	{
+		pre_diff = precision - len;
+	}
+	if (width > (len + pre_diff + prefix))
+	{
+		width_diff = width - (len + pre_diff + prefix);
+		if (flags->minus > 0)
+		{
+			/* 1 print prefix */
+			for (i = 0; i < prefix ; i++)
+			{
+				_putchar(s[j]);
+				j++;
 			}
 
-			if (precision > len)
+			/* 2 print precision diff */
+			for (i = 0; i < pre_diff ; i++)
 			{
-				pre_diff = precision - len
+				_putchar('0');
 			}
-			
+			/* 3 print the number */
+			while (s[j] != '\0')
+			{
+				_putchar(s[j]);
+				j++;
+			}
+			/* 4 print width diff as ' ' */
+			for (k = 0 ; k < width_diff ; k++)
+			{
+				_putchar(' ');
+			}
+			return (prefix + pre_diff + len + width_diff);
 		}
-		   
+		else
+		{
+			
+			for (k = 0 ; k < width_diff ; k++)
+			{
+				if (flags->zero > 0)
+					_putchar('0');
+				else
+					_putchar(' ');	
+			}
+			/* print prefix */
+			for (i = 0; i < prefix ; i++)
+			{
+				_putchar(s[j]);
+				j++;
+			}
+			/* print precision diff */
+			for (i = 0; i < pre_diff ; i++)
+			{
+				_putchar('0');
+			}
+			/* ----- */
+			while (s[j] != '\0')
+			{
+				_putchar(s[j]);
+				j++;
+			}
+			return (prefix + pre_diff + len + width_diff);
+		}
 	}
-	
-	
-	for (i = 0 ; s[i] != '\0' ; i++)
-	{
-		_putchar(s[i]);
-	}
-	return (i);
 }
