@@ -11,7 +11,7 @@ int get_flags(const char *s, flags_ty *flags)
 {
 	int i = 0;
 
-	while (s[i] == '+' || s[i] == ' ' || s[i] == '#')
+	while (s[i] == '+' || s[i] == ' ' || s[i] == '#' || s[i] == '0' || s[i] == '-')
 	{
 		if (s[i] == '+')
 			flags->plus += 1;
@@ -74,7 +74,7 @@ int get_precision(const char *s, int *precision, va_list args)
 		if (s[i] == '*')
 		{
 			*precision = va_arg(args, int);
-			return (1);
+			return (2);
 		}
 		*precision = 0;
 		while (s[i] >= '0' && s[i] <= '9')
@@ -82,13 +82,11 @@ int get_precision(const char *s, int *precision, va_list args)
 			*precision = (*precision * 10) + ((s[i]) - '0');
 			i++;
 		}
-		return (i);
+		return (i + 1);
 	}
-	else
-	{
-		return (-1);
-	}
+	return (i);
 }
+
 
 /**
  * get_length_modifier - get format flag
