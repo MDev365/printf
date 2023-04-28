@@ -3,7 +3,7 @@
 
 int handle_conversion_specification(const char *format, va_list args, int *ind, int *conv_len)
 {
-	int i = *ind, width = 0, precision = -1, len = 0, s_len, conv_exist = 0;
+	int i = *ind, width = 0, precision = -1, len = 0, s_len, conv_exist = 1;
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
 	char c_arg, *s_arg, int_buf[20], binary_buf[32], length;
 
@@ -109,6 +109,10 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 			s_len = print_rot13ed_string(s_arg);
 			len += s_len;
 		}
+	}
+	else
+	{
+		conv_exist = 0;
 	}
 
 	*ind = i;
