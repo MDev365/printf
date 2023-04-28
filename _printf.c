@@ -13,7 +13,6 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 	i += get_length_modifier(&format[i + 1], &length);
 	i += get_conversion_specifier(&format[i + 1], &flags);
 	
-	printf("\n -> format[i] :%c", format[i]);
 	if (flags.specifier == 'c')
 	{
 		c_arg = va_arg(args, int);
@@ -152,13 +151,11 @@ int _printf(const char *format, ...)
 			i_before = i;
 			conv_exist = handle_conversion_specification(format, args, &i, &conv_len);
 			len += conv_len;
-			printf("\n---%i---\n", conv_exist);
 			if (conv_exist == 0)
 			{
 				i = i_before;
 				if (format[i + 1] == '\0')
 				{
-					printf("\nWTF");
 					return (-1);
 				}
 				if(format[i + 1] != '\0')
