@@ -73,6 +73,7 @@ int uint_to_string(unsigned int num, char *buf, flags_ty *flags)
 	int i, j = 0;
 	int digits_array[32];
 
+	(void)flags;
 	if (num == 0)
 	{
 		buf[0] = '0';
@@ -153,6 +154,7 @@ int int_to_binary(unsigned int num, char *buf, flags_ty *flags)
 	int i, j = 0;
 	int digits_array[32];
 
+	(void)flags;
 	if (num == 0)
 	{
 		buf[0] = '0';
@@ -201,7 +203,7 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 				buf[j] = '+';
 				j++;
 			}
-			else if (flass->space > 0)
+			else if (flags->space > 0)
 			{
 				buf[j] = ' ';
 				j++;
