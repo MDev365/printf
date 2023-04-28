@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * int_to_hex - convert int to string
@@ -195,6 +196,7 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 
 	if (num == 0)
 	{
+		printf("---this is zero---\n");
 		buf[j] = '0';
 		if (precision == 0)
 		{
