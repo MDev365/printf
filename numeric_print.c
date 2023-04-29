@@ -91,6 +91,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		prefix = 2;
 	len -= prefix;
 	printf("\nlen: %i", len);
+	printf("\nprefix: %i", prefix);
 	printf("\nprecision: %i",precision);
 	printf("\nwidth: %i\n",width);
 	if (precision > len)
