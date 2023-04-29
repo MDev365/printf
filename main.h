@@ -30,7 +30,7 @@ int print_string(char *s, int width, int precision, flags_ty *flags);
 /* print numeric functions */
 void  print_pre_diff(int pre_diff);
 void  print_width_diff(int width_diff, char c);
-void  print_number(char *s, int pre_diff)
+void  print_number(char *s, int pre_diff);
 int  print_prefix(char *s, int prefix_len);
 int print_numeric(char *s, int width, int precision, flags_ty *flags);
 
