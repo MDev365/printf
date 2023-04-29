@@ -18,7 +18,7 @@ int handle_zero(char *buf, flags_ty *flags, int precision)
 	{
 		if (flags->plus > 0)
 		{
-			printf("plus: %i",flag->plus);
+			printf("plus: %i",flage->plus);
 			buf[j] = '+';
 			j++;
 		}
