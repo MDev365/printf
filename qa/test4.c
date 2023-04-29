@@ -124,9 +124,9 @@ int main(void)
 	
 	i++;
 	printf("\n============== %i ================\n", i);
-	_printf("%6c", 0);
+	_printf("(%6c)", 0);
 	printf("\n");
-	printf("%6c", 0);
+	printf("(%6c)", 0);
 	
 	i++;
 	printf("\n============== %i ================\n", i);
