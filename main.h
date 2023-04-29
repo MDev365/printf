@@ -13,6 +13,7 @@ typedef struct flags{
 	int zero;
 	int minus;
 	char specifier;
+	char length;
 } flags_ty;
 
 /* std libs */
