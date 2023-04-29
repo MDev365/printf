@@ -202,14 +202,5 @@ int main(void)
 	printf("\n len : %i\n", len);
 	printf("\n len : %i\n", len2);
 	
-	fflush(stdout);
-	if (len != len2)
-	{
-		printf("Lengths differ.\n");
-		fflush(stdout);
-		return (1);
-	}
-	return (0);
-	
 	return (1);
 }
