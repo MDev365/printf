@@ -1,6 +1,13 @@
 #include "main.h"
 #include <stdio.h>
-
+/**
+ * handle_conversion_specification - handle_conversion_specification
+ * @format: format
+ * @args: args
+ * @ind: index
+ * @conv_len: conversion length
+ * Return: int length
+*/
 int handle_conversion_specification(const char *format, va_list args, int *ind, int *conv_len)
 {
 	int i = *ind, width = 0, precision = -1, len = 0, s_len, conv_exist = 1;
@@ -12,6 +19,8 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 	i += get_precision(&format[i + 1], &precision, args);
 	i += get_length_modifier(&format[i + 1], &length);
 	i += get_conversion_specifier(&format[i + 1], &flags);
+	
+	binary_buf[0] = '\0';
 	
 	if (flags.specifier == 'c')
 	{
@@ -28,17 +37,9 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 		}
 	}
 	else if (flags.specifier == 's')
-	{
-		s_arg = va_arg(args, char *);
-		s_len = print_string(s_arg, width, precision, &flags);
-		len += s_len;
-	}
+		len += print_string(va_arg(args, char *), width, precision, &flags);
 	else if (flags.specifier == 'S')
-	{
-		s_arg = va_arg(args, char *);
-		s_len = print_string_non_print(s_arg);
-		len += s_len;
-	}
+		len += print_string_non_print(va_arg(args, char *));
 	else if (flags.specifier == '%')
 	{
 		_putchar('%');
@@ -46,73 +47,43 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 	}
 	else if (flags.specifier == 'i' || flags.specifier == 'd')
 	{
-		int_buf[0] = '\0';
 		s_len = int_to_string(va_arg(args, int), int_buf, &flags, precision);
 		len += print_numeric(int_buf, width, precision, &flags);
-		/*len += s_len;*/
 	}
 	else if (flags.specifier == 'b')
 	{
 		binary_buf[0] = '\0';
 		s_len = int_to_binary(va_arg(args, unsigned int), binary_buf, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
-		/*len += s_len;*/
 	}
 	else if (flags.specifier == 'o')
 	{
-		binary_buf[0] = '\0';
 		s_len = int_to_octal(va_arg(args, unsigned int), binary_buf, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
-		/*len += s_len;*/
 	}
 	else if (flags.specifier == 'u')
 	{
-		binary_buf[0] = '\0';
 		s_len = uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
-		/*len += s_len;*/
 	}
 	else if (flags.specifier == 'x')
 	{
-		binary_buf[0] = '\0';
 		s_len = int_to_hex(va_arg(args, unsigned int), binary_buf, 0, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
-		/*len += s_len;*/
 	}
 	else if (flags.specifier == 'X')
 	{
-		binary_buf[0] = '\0';
 		s_len = int_to_hex(va_arg(args, unsigned int), binary_buf, 1, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
-		/*len += s_len;*/
 	}
 	else if (flags.specifier == 'p')
-	{
 		len += print_address(va_arg(args, void *));
-		/*len += s_len;*/
-	}
 	else if (flags.specifier == 'r')
-	{
-		s_arg = va_arg(args, char *);
-		if (s_arg)
-		{
-			s_len = print_reverse_string(s_arg);
-			len += s_len;
-		}
-	}
+			len += print_reverse_string(va_arg(args, char *));
 	else if (flags.specifier == 'R')
-	{
-		s_arg = va_arg(args, char *);
-		if (s_arg)
-		{
-			s_len = print_rot13ed_string(s_arg);
-			len += s_len;
-		}
-	}
+		len += print_rot13ed_string(va_arg(args, char *));
 	else
-	{
 		conv_exist = 0;
-	}
 
 	*ind = i;
 	*conv_len = len;
