@@ -112,7 +112,7 @@ int handle_conversion_specification(const char *format, va_list args,
 	}
 	else if (flags.specifier == 'i' || flags.specifier == 'd' || flags.specifier == 'b' || flags.specifier == 'o' ||
 	    flags.specifier == 'u' || flags.specifier == 'x' || flags.specifier == 'X')
-		len + = handle_int_specifiers (&flags,
+		len += handle_int_specifiers (&flags,
 					       width, precision, args);
 	else if (flags.specifier == 'p')
 		len += print_address(va_arg(args, void *));
