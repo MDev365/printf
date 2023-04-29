@@ -20,13 +20,11 @@ int int_to_hex(unsigned int num, char *buf, int cap, flags_ty *flags)
 		buf[1] = '\0';
 		return (1);
 	}
-
 	for (i = 0 ; num > 0 ; i++)
 	{
 		digits_array[i] = num % 16;
 		num = num / 16;
 	}
-
 	if (flags->hash > 0)
 	{
 		buf[j] = '0';
@@ -37,13 +35,10 @@ int int_to_hex(unsigned int num, char *buf, int cap, flags_ty *flags)
 			buf[j] = 'x';
 		j++;
 	}
-
 	for (i = i - 1; i >= 0 ; i--)
 	{
 		if (digits_array[i] < 10)
-		{
 			buf[j] = digits_array[i] + '0';
-		}
 		else if (digits_array[i] >= 10)
 		{
 			if (cap == 1)
@@ -53,9 +48,7 @@ int int_to_hex(unsigned int num, char *buf, int cap, flags_ty *flags)
 		}
 		j++;
 	}
-
 	buf[j] = '\0';
-
 	return (j);
 }
 
