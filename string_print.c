@@ -1,5 +1,39 @@
 #include "main.h"
 
+/**
+ * print_char - print_char
+ * @c: char
+ * @width: width
+ *
+ * Return: width
+ */
+int print_char(char c, int width)
+{
+	int j;
+
+	if (width > 1)
+	{
+		if (flags->minus > 0)
+		{
+			_putchar(c);
+			for (j = 0 ; j < width - 1 ; j++)
+				_putchar(' ');
+			return (width);
+		}
+		else
+		{
+			for (j = 0 ; j < width - 1 ; j++)
+				_putchar(' ');
+			_putchar(c);
+			return (width);
+		}
+	}
+	else
+	{
+		_putchar(c);
+		return (1);
+	}
+}
 
 
 /**
