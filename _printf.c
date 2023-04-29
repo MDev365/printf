@@ -11,7 +11,7 @@
  *
  * Return: int length
 */
-int extract_conversion_specification (const char *format, flags_ty *flags,
+int extract_conversion_specification(const char *format, flags_ty *flags,
 				      int *width, int *precision, va_list args)
 {
 	int i = 0;
@@ -36,7 +36,7 @@ int extract_conversion_specification (const char *format, flags_ty *flags,
  *
  * Return: int length
 */
-int handle_int_specifiers (flags_ty *flags,
+int handle_int_specifiers(flags_ty *flags,
 				      int width, int precision, va_list args)
 {
 	int len = 0;
@@ -108,9 +108,9 @@ int handle_conversion_specification(const char *format, va_list args,
 		_putchar('%');
 		len++;
 	}
-	else if (flags.specifier == 'i' || flags.specifier == 'd' || flags.specifier == 'b' || flags.specifier == 'o' ||
-	    flags.specifier == 'u' || flags.specifier == 'x' || flags.specifier == 'X')
-		len += handle_int_specifiers (&flags,
+	else if (flags.specifier == 'i' || flags.specifier == 'd' || flags.specifier == 'o' ||
+	  flags.specifier == 'u' || flags.specifier == 'x' || flags.specifier == 'X')
+		len += handle_int_specifiers(&flags,
 					       width, precision, args);
 	else if (flags.specifier == 'p')
 		len += print_address(va_arg(args, void *));
