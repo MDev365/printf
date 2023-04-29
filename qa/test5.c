@@ -199,6 +199,9 @@ int main(void)
 	
 	len = _printf("%.*s", 6, "Best School !\n");
 	len2 = printf("%.*s", 6, "Best School !\n");
+	printf("\n len : %i\n", len);
+	printf("\n len : %i\n", len2);
+	
 	fflush(stdout);
 	if (len != len2)
 	{
