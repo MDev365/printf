@@ -27,11 +27,8 @@ int handle_zero(char *buf, flags_ty *flags, int precision)
 			j++;
 		}
 	}
-	else
-	{
-		buf[j] = '0';
-		j++;
-	}
+	buf[j] = '0';
+	j++;
 	buf[j] = '\0';
 	return (1);
 }
