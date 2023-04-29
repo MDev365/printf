@@ -43,7 +43,7 @@ int handle_int_specifiers(flags_ty *flags,
 	binary_buf[0] = '\0';
 	if (flags->specifier == 'i' || flags->specifier == 'd')
 	{
-		int_to_string(args, int_buf, flags, precision);
+		int_to_string(va_arg(args, int), int_buf, flags, precision);
 		len += print_numeric(int_buf, width, precision, flags);
 	}
 	else if (flags->specifier == 'b')
