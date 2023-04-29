@@ -30,7 +30,7 @@ int handle_conversion_specification(const char *format, va_list args,
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
 	char int_buf[20], binary_buf[40], length;
 
-	i += extract_conversion_specification (&format[i], &flags, &width, &precision, &length, args)
+	i += extract_conversion_specification (&format[i], &flags, &width, &precision, &length, args);
 	/* i += get_flags(&format[i + 1], &flags);
 	 * i += get_width(&format[i + 1], &width, args);
 	 * i += get_precision(&format[i + 1], &precision, args);
