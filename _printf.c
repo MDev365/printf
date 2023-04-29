@@ -47,39 +47,39 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 	}
 	else if (flags.specifier == 'i' || flags.specifier == 'd')
 	{
-		s_len = int_to_string(va_arg(args, int), int_buf, &flags, precision);
+		int_to_string(va_arg(args, int), int_buf, &flags, precision);
 		len += print_numeric(int_buf, width, precision, &flags);
 	}
 	else if (flags.specifier == 'b')
 	{
 		binary_buf[0] = '\0';
-		s_len = int_to_binary(va_arg(args, unsigned int), binary_buf, &flags);
+		int_to_binary(va_arg(args, unsigned int), binary_buf, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
 	}
 	else if (flags.specifier == 'o')
 	{
-		s_len = int_to_octal(va_arg(args, unsigned int), binary_buf, &flags);
+		int_to_octal(va_arg(args, unsigned int), binary_buf, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
 	}
 	else if (flags.specifier == 'u')
 	{
-		s_len = uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
+		uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
 	}
 	else if (flags.specifier == 'x')
 	{
-		s_len = int_to_hex(va_arg(args, unsigned int), binary_buf, 0, &flags);
+		int_to_hex(va_arg(args, unsigned int), binary_buf, 0, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
 	}
 	else if (flags.specifier == 'X')
 	{
-		s_len = int_to_hex(va_arg(args, unsigned int), binary_buf, 1, &flags);
+		int_to_hex(va_arg(args, unsigned int), binary_buf, 1, &flags);
 		len += print_numeric(binary_buf, width, precision, &flags);
 	}
 	else if (flags.specifier == 'p')
 		len += print_address(va_arg(args, void *));
 	else if (flags.specifier == 'r')
-			len += print_reverse_string(va_arg(args, char *));
+		len += print_reverse_string(va_arg(args, char *));
 	else if (flags.specifier == 'R')
 		len += print_rot13ed_string(va_arg(args, char *));
 	else
