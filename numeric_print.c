@@ -35,6 +35,7 @@ void  print_width_diff(int width_diff, char c)
 /**
  * print_number - print number
  * @s: char *
+ * @pre_diff: precision differenc
  *
  * Return: void
  */
