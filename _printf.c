@@ -108,8 +108,9 @@ int handle_conversion_specification(const char *format, va_list args,
 		_putchar('%');
 		len++;
 	}
-	else if (flags.specifier == 'i' || flags.specifier == 'd' || flags.specifier == 'o' ||
-	  flags.specifier == 'u' || flags.specifier == 'x' || flags.specifier == 'X')
+	else if (flags.specifier == 'i' || flags.specifier == 'd' || 
+		 flags.specifier == 'o' || flags.specifier == 'u' || 
+		 flags.specifier == 'x' || flags.specifier == 'X')
 		len += handle_int_specifiers(&flags,
 					       width, precision, args);
 	else if (flags.specifier == 'p')
@@ -159,7 +160,8 @@ int _printf(const char *format, ...)
 			if (conv_exist == 0)
 			{
 				i = i_before;
-				if (format[i + 1] == '\0' || (format[i + 1] == ' ' && format[i + 2] == '\0'))
+				if (format[i + 1] == '\0' || (format[i + 1] == ' ' &&
+							      format[i + 2] == '\0'))
 				{
 					return (-1);
 				}
