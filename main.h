@@ -26,7 +26,7 @@ int print_string_non_print(char *s);
 int print_reverse_string(char *s);
 int print_rot13ed_string(char *s);
 int print_string(char *s, int width, int precision, flags_ty *flags);
-int print_char(char c, int width);
+int print_char(char c, int width, flags_ty *flags);
 
 /* print numeric functions */
 void  print_pre_diff(int pre_diff);
