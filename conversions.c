@@ -76,7 +76,7 @@ int int_to_string(va_list args, char *buf, flags_ty *flags, int precision)
 	}
 	else if (flags->length == 'h')
 	{
-		uh = va_arg(args, unsigned short);
+		uh = (unsigned short)va_arg(args, int);
 		if (uh == 0)
 			return (handle_zero(buf, flags, precision));
 		for (i = 0 ; uh > 0 ; i++)
