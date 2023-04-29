@@ -13,7 +13,7 @@ int handle_conversion_specification(const char *format, va_list args,
 {
 	int i = *ind, width = 0, precision = -1, len = 0, conv_exist = 1;
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
-	char c_arg, int_buf[20], binary_buf[32], length;
+	char int_buf[20], binary_buf[32], length;
 
 	i += get_flags(&format[i + 1], &flags);
 	i += get_width(&format[i + 1], &width, args);
@@ -25,17 +25,7 @@ int handle_conversion_specification(const char *format, va_list args,
 
 	if (flags.specifier == 'c')
 	{
-		c_arg = va_arg(args, int);
-		if (c_arg)
-		{
-			_putchar(c_arg);
-			len++;
-		}
-		else
-		{
-			_putchar(0);
-			len++;
-		}
+		len += print_char(va_arg(args, int), width);
 	}
 	else if (flags.specifier == 's')
 		len += print_string(va_arg(args, char *), width, precision, &flags);
