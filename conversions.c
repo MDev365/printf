@@ -58,7 +58,7 @@ int handle_zero(char *buf, flags_ty *flags, int precision)
 int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 {
 	int neg = 0, i, j = 0;
-	int digits_array[20];
+	int digits_array[40];
 	unsigned int local_num;
 
 	if (num == 0)
