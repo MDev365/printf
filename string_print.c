@@ -4,6 +4,7 @@
  * print_char - print_char
  * @c: char
  * @width: width
+ * @flags: flags
  *
  * Return: width
  */
@@ -47,7 +48,7 @@ int putstr(char *s, int len)
 {
 	int i;
 
-	for (i = 0 ; (i < len && s[i] != '\0') ; i++)
+	for (i = 0; (i < len && s[i] != '\0'); i++)
 			_putchar(s[i]);
 	return (i);
 }
