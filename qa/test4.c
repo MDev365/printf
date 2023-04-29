@@ -155,7 +155,7 @@ int main(void)
 	printf("\n============== %i ================\n", i);
 	_printf("%*d", 6, 0);
 	printf("\n");
-	printf("%*d", 6, 0);
+	printf("%*d\n", 6, 0);
 	
 	return (1);
 }
