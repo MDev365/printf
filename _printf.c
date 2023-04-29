@@ -7,24 +7,77 @@
  * @flags: flags
  * @width: width
  * @precision: precision
- * @length: length
  * @args: args
  *
  * Return: int length
 */
 int extract_conversion_specification (const char *format, flags_ty *flags,
-				      int *width, int *precision, char *length, va_list args)
+				      int *width, int *precision, va_list args)
 {
 	int i = 0;
 
 	i += get_flags(&format[i + 1], flags);
 	i += get_width(&format[i + 1], width, args);
 	i += get_precision(&format[i + 1], precision, args);
-	i += get_length_modifier(&format[i + 1], length);
+	i += get_length_modifier(&format[i + 1], flags);
 	i += get_conversion_specifier(&format[i + 1], flags);
 
 	return (i);
 }
+
+/**
+ * extract_conversion_specification - extract_conversion_specification
+ * @format: format
+ * @flags: flags
+ * @width: width
+ * @precision: precision
+ * @length: length
+ * @args: args
+ *
+ * Return: int length
+*/
+int handle_int_specifiers (flags_ty *flags,
+				      int width, int precision, va_list args)
+{
+	int len = 0;
+	char int_buf[20], binary_buf[40];
+
+	binary_buf[0] = '\0';
+	if (flags.specifier == 'i' || flags.specifier == 'd')
+	{
+		int_to_string(va_arg(args, int), int_buf, flags, precision);
+		len += print_numeric(int_buf, width, precision, flags);
+	}
+	else if (flags.specifier == 'b')
+	{
+		binary_buf[0] = '\0';
+		int_to_binary(va_arg(args, unsigned int), binary_buf, flags);
+		len += print_numeric(binary_buf, width, precision, flags);
+	}
+	else if (flags.specifier == 'o')
+	{
+		int_to_octal(va_arg(args, unsigned int), binary_buf, flags);
+		len += print_numeric(binary_buf, width, precision, flags);
+	}
+	else if (flags.specifier == 'u')
+	{
+		uint_to_string(va_arg(args, unsigned int), binary_buf, flags);
+		len += print_numeric(binary_buf, width, precision, flags);
+	}
+	else if (flags.specifier == 'x')
+	{
+		int_to_hex(va_arg(args, unsigned int), binary_buf, 0, flags);
+		len += print_numeric(binary_buf, width, precision, flags);
+	}
+	else if (flags.specifier == 'X')
+	{
+		int_to_hex(va_arg(args, unsigned int), binary_buf, 1, flags);
+		len += print_numeric(binary_buf, width, precision, flags);
+	}
+	return (len);
+}
+
+
 
 /**
  * handle_conversion_specification - handle_conversion_specification
@@ -38,11 +91,11 @@ int handle_conversion_specification(const char *format, va_list args,
 									int *ind, int *conv_len)
 {
 	int i = *ind, width = 0, precision = -1, len = 0, conv_exist = 1;
-	flags_ty flags = {0, 0, 0, 0, 0, 0};
-	char int_buf[20], binary_buf[40], length;
+	flags_ty flags = {0, 0, 0, 0, 0, 0, 0};
+	char int_buf[20], binary_buf[40];
 
 	i += extract_conversion_specification(&format[i], &flags, &width,
-					       &precision, &length, args);
+					       &precision, args);
 	binary_buf[0] = '\0';
 
 	if (flags.specifier == 'c')
@@ -58,37 +111,10 @@ int handle_conversion_specification(const char *format, va_list args,
 		_putchar('%');
 		len++;
 	}
-	else if (flags.specifier == 'i' || flags.specifier == 'd')
-	{
-		int_to_string(va_arg(args, int), int_buf, &flags, precision);
-		len += print_numeric(int_buf, width, precision, &flags);
-	}
-	else if (flags.specifier == 'b')
-	{
-		binary_buf[0] = '\0';
-		int_to_binary(va_arg(args, unsigned int), binary_buf, &flags);
-		len += print_numeric(binary_buf, width, precision, &flags);
-	}
-	else if (flags.specifier == 'o')
-	{
-		int_to_octal(va_arg(args, unsigned int), binary_buf, &flags);
-		len += print_numeric(binary_buf, width, precision, &flags);
-	}
-	else if (flags.specifier == 'u')
-	{
-		uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
-		len += print_numeric(binary_buf, width, precision, &flags);
-	}
-	else if (flags.specifier == 'x')
-	{
-		int_to_hex(va_arg(args, unsigned int), binary_buf, 0, &flags);
-		len += print_numeric(binary_buf, width, precision, &flags);
-	}
-	else if (flags.specifier == 'X')
-	{
-		int_to_hex(va_arg(args, unsigned int), binary_buf, 1, &flags);
-		len += print_numeric(binary_buf, width, precision, &flags);
-	}
+	else if (flags.specifier == 'i' || flags.specifier == 'd' || flags.specifier == 'b' || flags.specifier == 'o' ||
+	    flags.specifier == 'u' || flags.specifier == 'x' || flags.specifier == 'X')
+		len + = handle_int_specifiers (&flags,
+					       width, precision, args);
 	else if (flags.specifier == 'p')
 		len += print_address(va_arg(args, void *));
 	else if (flags.specifier == 'r')
