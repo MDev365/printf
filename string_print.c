@@ -15,6 +15,7 @@ int putstr(char *s, int len)
 
 	for (i = 0 ; i < len || s[i] !='\0' ; i++)
 			_putchar(s[i]);
+	return (i);
 }
 
 
