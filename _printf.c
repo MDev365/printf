@@ -95,8 +95,6 @@ int handle_conversion_specification(const char *format, va_list args,
 
 	i += extract_conversion_specification(&format[i], &flags, &width,
 					       &precision, args);
-	binary_buf[0] = '\0';
-
 	if (flags.specifier == 'c')
 	{
 		len += print_char(va_arg(args, int), width, &flags);
