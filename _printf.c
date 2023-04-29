@@ -13,7 +13,7 @@ int handle_conversion_specification(const char *format, va_list args,
 {
 	int i = *ind, width = 0, precision = -1, len = 0, conv_exist = 1;
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
-	char int_buf[20], binary_buf[32], length;
+	char int_buf[20], binary_buf[40], length;
 
 	i += get_flags(&format[i + 1], &flags);
 	i += get_width(&format[i + 1], &width, args);
