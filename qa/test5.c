@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	int i = 3;
+	int i = 3, len, len2;
 	
 	i++;
 	printf("\n============== %i ================\n", i);
@@ -195,6 +195,18 @@ int main(void)
 	_printf("%.*d", 6, 0);
 	printf("\n");
 	printf("%.*d\n", 6, 0);
+	
+	
+	len = _printf("%.*s", 6, "Best School !\n");
+	len2 = printf("%.*s", 6, "Best School !\n");
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	return (0);
 	
 	return (1);
 }
