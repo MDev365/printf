@@ -85,7 +85,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 	len = _strlen(s);
 	if (s[0] == '0' && len == 1 && precision == 0)
 		return (0);
-	if (s[0] == '+' || s[0] == '-' || s[0] == ' ' || s[0] == '0')
+	if (s[0] == '+' || s[0] == '-' || s[0] == ' ')
 		prefix = 1;
 	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
