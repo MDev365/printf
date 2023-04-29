@@ -43,33 +43,33 @@ int handle_int_specifiers (flags_ty *flags,
 	char int_buf[20], binary_buf[40];
 
 	binary_buf[0] = '\0';
-	if (flags.specifier == 'i' || flags.specifier == 'd')
+	if (flags->specifier == 'i' || flags->specifier == 'd')
 	{
 		int_to_string(va_arg(args, int), int_buf, flags, precision);
 		len += print_numeric(int_buf, width, precision, flags);
 	}
-	else if (flags.specifier == 'b')
+	else if (flags->specifier == 'b')
 	{
 		binary_buf[0] = '\0';
 		int_to_binary(va_arg(args, unsigned int), binary_buf, flags);
 		len += print_numeric(binary_buf, width, precision, flags);
 	}
-	else if (flags.specifier == 'o')
+	else if (flags->specifier == 'o')
 	{
 		int_to_octal(va_arg(args, unsigned int), binary_buf, flags);
 		len += print_numeric(binary_buf, width, precision, flags);
 	}
-	else if (flags.specifier == 'u')
+	else if (flags->specifier == 'u')
 	{
 		uint_to_string(va_arg(args, unsigned int), binary_buf, flags);
 		len += print_numeric(binary_buf, width, precision, flags);
 	}
-	else if (flags.specifier == 'x')
+	else if (flags->specifier == 'x')
 	{
 		int_to_hex(va_arg(args, unsigned int), binary_buf, 0, flags);
 		len += print_numeric(binary_buf, width, precision, flags);
 	}
-	else if (flags.specifier == 'X')
+	else if (flags->specifier == 'X')
 	{
 		int_to_hex(va_arg(args, unsigned int), binary_buf, 1, flags);
 		len += print_numeric(binary_buf, width, precision, flags);
