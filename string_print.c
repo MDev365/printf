@@ -74,6 +74,7 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 	len = _strlen(s);
 	if ((precision < len) && (precision >= 0))
 	{
+		printf("\n precision : %i \n", precision);
 		if (null == 1)
 			len = 0;
 		else
