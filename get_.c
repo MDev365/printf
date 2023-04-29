@@ -11,7 +11,8 @@ int get_flags(const char *s, flags_ty *flags)
 {
 	int i = 0;
 
-	while (s[i] == '+' || s[i] == ' ' || s[i] == '#' || s[i] == '0' || s[i] == '-')
+	while (s[i] == '+' || s[i] == ' ' || s[i] == '#' ||
+		   s[i] == '0' || s[i] == '-')
 	{
 		if (s[i] == '+')
 			flags->plus += 1;
