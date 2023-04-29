@@ -6,6 +6,10 @@
  * @plus: +
  * @space: ' '
  * @hash: #
+ * @zero: 0
+ * @minus: -
+ * @specifier: i, d,...
+ * @length: l, h
  */
 typedef struct flags
 {
