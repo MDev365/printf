@@ -7,7 +7,7 @@
  *
  * Return: width
  */
-int print_char(char c, int width)
+int print_char(char c, int width, flags_ty *flags)
 {
 	int j;
 
