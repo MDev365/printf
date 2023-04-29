@@ -16,13 +16,13 @@ int extract_conversion_specification (const char *format, flags_ty *flags,
 				      int *width, int *precision, char *length, va_list args)
 {
 	int i = 0;
-	
+
 	i += get_flags(&format[i + 1], flags);
 	i += get_width(&format[i + 1], width, args);
 	i += get_precision(&format[i + 1], precision, args);
 	i += get_length_modifier(&format[i + 1], length);
 	i += get_conversion_specifier(&format[i + 1], flags);
-	
+
 	return (i);
 }
 
@@ -41,14 +41,8 @@ int handle_conversion_specification(const char *format, va_list args,
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
 	char int_buf[20], binary_buf[40], length;
 
-	i += extract_conversion_specification (&format[i], &flags, &width, &precision, &length, args);
-	/* i += get_flags(&format[i + 1], &flags);
-	 * i += get_width(&format[i + 1], &width, args);
-	 * i += get_precision(&format[i + 1], &precision, args);
-	 * i += get_length_modifier(&format[i + 1], &length);
-	 * i += get_conversion_specifier(&format[i + 1], &flags);
-	 */
-
+	i += extract_conversion_specification (&format[i], &flags, &width,
+					       &precision, &length, args);
 	binary_buf[0] = '\0';
 
 	if (flags.specifier == 'c')
