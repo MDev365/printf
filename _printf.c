@@ -25,7 +25,7 @@ int handle_conversion_specification(const char *format, va_list args,
 
 	if (flags.specifier == 'c')
 	{
-		len += print_char(va_arg(args, int), width);
+		len += print_char(va_arg(args, int), width, &flags);
 	}
 	else if (flags.specifier == 's')
 		len += print_string(va_arg(args, char *), width, precision, &flags);
