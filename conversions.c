@@ -18,7 +18,6 @@ int handle_zero(char *buf, flags_ty *flags, int precision)
 	{
 		if (flags->plus > 0)
 		{
-			printf("plus: %i",flags->plus);
 			buf[j] = '+';
 			j++;
 		}
@@ -28,8 +27,21 @@ int handle_zero(char *buf, flags_ty *flags, int precision)
 			j++;
 		}
 	}
-	buf[j] = '0';
-	j++;
+	else
+	{
+		if (flags->plus > 0)
+		{
+			buf[j] = '+';
+			j++;
+		}
+		else if (flags->space > 0)
+		{
+			buf[j] = ' ';
+			j++;
+		}
+		buf[j] = '0';
+		j++;
+	}
 	buf[j] = '\0';
 	return (1);
 }
