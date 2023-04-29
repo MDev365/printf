@@ -69,6 +69,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 	{
 		binary_buf[0] = '\0';
 		s_len = uint_to_string(va_arg(args, unsigned int), binary_buf, &flags);
+		printf("\ns_len : %i\n",s_len);
 		len += print_numeric(int_buf, width, precision, &flags);
 		/*len += s_len;*/
 	}
