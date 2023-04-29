@@ -81,7 +81,6 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 	int j = 0, len, pre_diff = 0, width_diff = 0, prefix = 0;
 
 	len = _strlen(s);
-	printf("\nlen: %i\n", len);
 	if (s[0] == '0' && len == 1 && precision == 0)
 	{
 		return (0);
