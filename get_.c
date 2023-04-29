@@ -82,7 +82,7 @@ int get_precision(const char *s, int *precision, va_list args)
 			*precision = (*precision * 10) + ((s[i]) - '0');
 			i++;
 		}
-		return (i + 1);
+		return (i);
 	}
 	return (i);
 }
