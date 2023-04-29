@@ -111,7 +111,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		}
 		else
 		{
-			if (flags->zero == 0 || precision >= 0)
+			if (!(flags->zero > 0 || precision < 0))
 				print_width_diff(width_diff, ' ');
 			j += print_prefix(&s[j], prefix);
 			if (flags->zero > 0 || precision < 0)
