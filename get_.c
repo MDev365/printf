@@ -95,18 +95,18 @@ int get_precision(const char *s, int *precision, va_list args)
  *
  * Return: int
  */
-int get_length_modifier(const char *s, char *length)
+int get_length_modifier(const char *s, flags_ty *flags)
 {
 	int i = 0;
 
 	if (s[i] == 'l')
 	{
-		*length = 'l';
+		flags->length = 'l';
 		return (1);
 	}
 	else if (s[i] == 'h')
 	{
-		*length = 'h';
+		flags->length = 'h';
 		return (1);
 	}
 	return (0);
