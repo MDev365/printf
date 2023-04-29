@@ -101,7 +101,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 	if (width > (len + pre_diff + prefix))
 	{
 		width_diff = width - (len + pre_diff + prefix);
-		printf("\nwidth_diff: %i",width_diff);
+		printf("\nwidth_diff: %i\n",width_diff);
 		if (flags->minus > 0)
 		{
 			j += print_prefix(&s[j], prefix);
@@ -122,6 +122,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 	}
 	else
 	{
+		printf("\nelse: %i\n",width_diff);
 		j += print_prefix(&s[j], prefix);
 		print_number(&s[j], pre_diff);
 		return (prefix + pre_diff + len + width_diff);
