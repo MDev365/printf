@@ -55,7 +55,7 @@ int handle_zero(char *buf, flags_ty *flags, int precision)
  *
  * Return: length of the string
  */
-int int_to_string(int num, char *buf, flags_ty *flags, int precision)
+int int_to_string(va_list args, char *buf, flags_ty *flags, int precision)
 {
 	int neg = 0, i, j = 0;
 	int digits_array[40];
@@ -63,12 +63,11 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 	unsigned long ul;
 	unsigned short uh;
 
-	if (num == 0)
-		return (handle_zero(buf, flags, precision));
-
 	if (flags->length == 'l')
 	{
-		ul = (unsigned long) num;
+		ul = va_arg(args, unsigned long);
+		if (ul == 0)
+			return (handle_zero(buf, flags, precision));
 		for (i = 0 ; ul > 0 ; i++)
 		{
 			digits_array[i] = ul % 10;
@@ -77,7 +76,9 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 	}
 	else if (flags->length == 'h')
 	{
-		uh = (unsigned short) num;
+		uh = va_arg(args, unsigned short);
+		if (uh == 0)
+			return (handle_zero(buf, flags, precision));
 		for (i = 0 ; uh > 0 ; i++)
 		{
 			digits_array[i] = uh % 10;
@@ -86,7 +87,10 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 	}
 	else
 	{
-		if (num < 0)
+		num = va_arg(args, int);
+		if (num == 0)
+			return (handle_zero(buf, flags, precision));
+		else if (num < 0)
 		{
 			neg = 1;
 			local_num = (unsigned int)(num * -1);
