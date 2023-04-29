@@ -40,7 +40,7 @@ int handle_int_specifiers (flags_ty *flags,
 				      int width, int precision, va_list args)
 {
 	int len = 0;
-	char int_buf[20], binary_buf[40];
+	char int_buf[40], binary_buf[40];
 
 	binary_buf[0] = '\0';
 	if (flags->specifier == 'i' || flags->specifier == 'd')
@@ -92,7 +92,6 @@ int handle_conversion_specification(const char *format, va_list args,
 {
 	int i = *ind, width = 0, precision = -1, len = 0, conv_exist = 1;
 	flags_ty flags = {0, 0, 0, 0, 0, 0, 0};
-	char int_buf[20], binary_buf[40];
 
 	i += extract_conversion_specification(&format[i], &flags, &width,
 					       &precision, args);
