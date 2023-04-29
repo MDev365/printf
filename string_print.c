@@ -2,6 +2,21 @@
 
 
 
+/**
+ * putstr - putstr
+ * @s: string
+ * @len: length
+ *
+ * Return: len
+ */
+int putstr(char *s, int len)
+{
+	int i;
+
+	for (i = 0 ; i < len || s[i] !='\0' ; i++)
+			_putchar(s[i]);
+}
+
 
 /**
  * print_string - print string
@@ -53,20 +68,4 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 	{
 		return (putstr(s, len));
 	}
-}
-
-
-/**
- * putstr - putstr
- * @s: string
- * @len: length
- *
- * Return: len
- */
-int putstr(char *s, int len)
-{
-	int i;
-
-	for (i = 0 ; i < len || s[i] !='\0' ; i++)
-			_putchar(s[i]);
 }
