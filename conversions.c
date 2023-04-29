@@ -50,7 +50,7 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 	unsigned int local_num;
 
 	if (num == 0)
-		return (handle_zero(buf, &flags, precision));
+		return (handle_zero(buf, flags, precision));
 	else if (num < 0)
 	{
 		neg = 1;
