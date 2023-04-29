@@ -38,10 +38,11 @@ void  print_width_diff(int width_diff, char c)
  *
  * Return: void
  */
-void  print_number(char *s)
+void  print_number(char *s, int pre_diff)
 {
 	int i = 0;
 
+	print_pre_diff(pre_diff);
 	while (s[i] != '\0')
 	{
 		_putchar(s[i]);
@@ -82,27 +83,21 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 
 	len = _strlen(s);
 	if (s[0] == '0' && len == 1 && precision == 0)
-	{
 		return (0);
-	}
-	/* check if there is sign or prefixes */
 	if (s[0] == '+' || s[0] == '-' || s[0] == ' ' || s[0] == '0')
 		prefix = 1;
 	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
 	len -= prefix;
 	if (precision > len)
-	{
 		pre_diff = precision - len;
-	}
 	if (width > (len + pre_diff + prefix))
 	{
 		width_diff = width - (len + pre_diff + prefix);
 		if (flags->minus > 0)
 		{
 			j += print_prefix(&s[j], prefix);
-			print_pre_diff(pre_diff);
-			print_number(&s[j]);
+			print_number(&s[j], pre_diff);
 			print_width_diff(width_diff, ' ');
 			return (prefix + pre_diff + len + width_diff);
 		}
@@ -113,16 +108,14 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 			j += print_prefix(&s[j], prefix);
 			if (flags->zero > 0 || precision < 0)
 				print_width_diff(width_diff, '0');
-			print_pre_diff(pre_diff);
-			print_number(&s[j]);
+			print_number(&s[j], pre_diff);
 			return (prefix + pre_diff + len + width_diff);
 		}
 	}
 	else
 	{
 		j += print_prefix(&s[j], prefix);
-		print_pre_diff(pre_diff);
-		print_number(&s[j]);
+		print_number(&s[j], pre_diff);
 		return (prefix + pre_diff + len + width_diff);
 	}
 }
