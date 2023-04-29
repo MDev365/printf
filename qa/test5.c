@@ -197,8 +197,8 @@ int main(void)
 	printf("%.*d\n", 6, 0);
 	
 	
-	len = _printf("%.*s", 6, "Best School !\n");
-	len2 = printf("%.*s", 6, "Best School !\n");
+	len = _printf("%.*s", 20, "Best School !\n");
+	len2 = printf("%.*s", 20, "Best School !\n");
 	printf("\n len : %i\n", len);
 	printf("\n len : %i\n", len2);
 	
