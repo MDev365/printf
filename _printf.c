@@ -1,8 +1,19 @@
 #include "main.h"
 #include <stdio.h>
 
-
-int extract_conversion_specification (const char *format, flags_ty *flags, int *width, int *precision, char *length, va_list args)
+/**
+ * extract_conversion_specification - extract_conversion_specification
+ * @format: format
+ * @flags: flags
+ * @width: width
+ * @precision: precision
+ * @length: length
+ * @args: args
+ *
+ * Return: int length
+*/
+int extract_conversion_specification (const char *format, flags_ty *flags,
+				      int *width, int *precision, char *length, va_list args)
 {
 	int i = 0;
 	
