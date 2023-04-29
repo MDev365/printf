@@ -10,8 +10,10 @@
  *
  * Return: length of the string
  */
-int handle_zero(char *buf, flags_ty *flags, int precision)
+int handle_zero(char *buf, flags_ty **flags, int precision)
 {
+	int j = 0;
+
 	if (precision == 0)
 	{
 		if (flags->plus > 0)
@@ -50,7 +52,7 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 	unsigned int local_num;
 
 	if (num == 0)
-		return (handle_zero(buf, flags, precision));
+		return (handle_zero(buf, &flags, precision));
 	else if (num < 0)
 	{
 		neg = 1;
