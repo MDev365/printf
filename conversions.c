@@ -70,12 +70,12 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 		buf[j] = '-';
 		j++;
 	}
-	else if (flags->plus > 1)
+	else if (flags->plus > 0)
 	{
 		buf[j] = '+';
 		j++;
 	}
-	else if (flags->space > 1)
+	else if (flags->space > 0)
 	{
 		buf[j] = ' ';
 		j++;
