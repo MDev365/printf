@@ -90,8 +90,6 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
 	len -= prefix;
-	printf("\ns[0] = %c\n", s[0]);
-	printf("prefix = %i\n", prefix);
 	if (precision > len)
 		pre_diff = precision - len;
 	if (width > (len + pre_diff + prefix))
