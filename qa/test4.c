@@ -39,7 +39,6 @@ int main(void)
 	i++;
 	printf("\n============== %i ================\n", i);
 	_printf("In the middle %6d of a sentence.\n", 1024);
-	printf("\n");
 	printf("In the middle %6d of a sentence.\n", 1024);
 	
 	printf("/********************************( u )*********************************/");
@@ -64,7 +63,6 @@ int main(void)
 	i++;
 	printf("\n============== %i ================\n", i);
 	_printf("In the middle %6u of a sentence.\n", 1024);
-	printf("\n");
 	printf("In the middle %6u of a sentence.\n", 1024);
 	
 	printf("/********************************( o )*********************************/");
@@ -89,7 +87,6 @@ int main(void)
 	i++;
 	printf("\n============== %i ================\n", i);
 	_printf("In the middle %6o of a sentence.\n", 1024);
-	printf("\n");
 	printf("In the middle %6o of a sentence.\n", 1024);
 	
 	printf("/********************************( x )*********************************/");
@@ -114,9 +111,51 @@ int main(void)
 	i++;
 	printf("\n============== %i ================\n", i);
 	_printf("In the middle %6x of a sentence.\n", 1024);
-	printf("\n");
 	printf("In the middle %6x of a sentence.\n", 1024);
 	printf("\n");
+	
+	
+	printf("/********************************( c )*********************************/");
+	i++;
+	printf("\n============== %i ================\n", i);
+	_printf("%6c", 'A');
+	printf("\n");
+	printf("%6c", 'A');
+	
+	i++;
+	printf("\n============== %i ================\n", i);
+	_printf("%6c", 0);
+	printf("\n");
+	printf("%6c", 0);
+	
+	i++;
+	printf("\n============== %i ================\n", i);
+	_printf("In the middle %6c of a sentence.\n", 'H');
+	printf("In the middle %6c of a sentence.\n", 'H');
+
+	printf("/********************************( s )*********************************/");
+	i++;
+	printf("\n============== %i ================\n", i);
+	_printf("%6s", "Best School !\n");
+	printf("%6s", "Best School !\n");
+	
+	i++;
+	printf("\n============== %i ================\n", i);
+	_printf("%6s", "Hi!\n");
+	printf("%6s", "Hi!\n");
+	
+	
+	i++;
+	printf("\n============== %i ================\n", i);
+	_printf("In the middle %6s of a sentence.\n", "Hey");
+	printf("In the middle %6s of a sentence.\n", "Hey");
+	
+	printf("/********************************( *d )*********************************/");
+	i++;
+	printf("\n============== %i ================\n", i);
+	_printf("%*d", 6, 0);
+	printf("\n");
+	printf("%*d", 6, 0);
 	
 	return (1);
 }
