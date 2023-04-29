@@ -27,11 +27,9 @@ int extract_conversion_specification(const char *format, flags_ty *flags,
 
 /**
  * extract_conversion_specification - extract_conversion_specification
- * @format: format
  * @flags: flags
  * @width: width
  * @precision: precision
- * @length: length
  * @args: args
  *
  * Return: int length
@@ -108,8 +106,8 @@ int handle_conversion_specification(const char *format, va_list args,
 		_putchar('%');
 		len++;
 	}
-	else if (flags.specifier == 'i' || flags.specifier == 'd' || 
-		 flags.specifier == 'o' || flags.specifier == 'u' || 
+	else if (flags.specifier == 'i' || flags.specifier == 'd' ||
+		 flags.specifier == 'o' || flags.specifier == 'u' ||
 		 flags.specifier == 'x' || flags.specifier == 'X')
 		len += handle_int_specifiers(&flags,
 					       width, precision, args);
@@ -149,7 +147,6 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	for (i = 0 ; format[i] != '\0' ; i++)
 	{
 		if (format[i] == '%')
