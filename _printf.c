@@ -17,10 +17,7 @@ int handle_conversion_specification(const char *format, va_list args,
 
 	i += get_flags(&format[i + 1], &flags);
 	i += get_width(&format[i + 1], &width, args);
-	printf("\ni: %i\n", i);
 	i += get_precision(&format[i + 1], &precision, args);
-	printf("\nprecision: %i\n", precision);
-	printf("\ni: %i\n", i);
 	i += get_length_modifier(&format[i + 1], &length);
 	i += get_conversion_specifier(&format[i + 1], &flags);
 
