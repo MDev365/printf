@@ -5,7 +5,7 @@
 int main(void)
 {
 	int i = 3;
-	long int l, res;
+	long int l;
 	
 	i++;
 	printf("\n============== %i ================\n", i);
