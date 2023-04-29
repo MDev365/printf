@@ -89,19 +89,12 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags)
 		prefix = 1;
 	else if (s[1] == 'x' || s[1] == 'X')
 		prefix = 2;
-	printf("\nlen_b: %i", len);
 	len -= prefix;
-	printf("\nprefix: %i", prefix);
-	printf("\nlen: %i", len);
-	printf("\nprecision: %i",precision);
-	printf("\nwidth: %i",width);
-	printf("\nlen + pre_diff + prefix: %i\n",len + pre_diff + prefix);
 	if (precision > len)
 		pre_diff = precision - len;
 	if (width > (len + pre_diff + prefix))
 	{
 		width_diff = width - (len + pre_diff + prefix);
-		printf("\nwidth_diff: %i\n",width_diff);
 		if (flags->minus > 0)
 		{
 			j += print_prefix(&s[j], prefix);
