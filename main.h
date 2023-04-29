@@ -45,7 +45,7 @@ int print_numeric(char *s, int width, int precision, flags_ty *flags);
 
 /* conversions functions */
 int _strlen(const char *s);
-int int_to_string(va_list args, char *buf, flags_ty *flags, int precision);
+int int_to_string(int num, char *buf, flags_ty *flags, int precision);
 int int_to_binary(unsigned int num, char *buf, flags_ty *flags);
 int int_to_octal(unsigned int num, char *buf, flags_ty *flags);
 int int_to_hex(unsigned int num, char *buf, int cap, flags_ty *flags);
