@@ -1,12 +1,14 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-/* flags - flags struct
+/* *
+ * flags - flags struct
  * @plus: +
  * @space: ' '
  * @hash: #
  */
-typedef struct flags{
+typedef struct flags
+{
 	int plus;
 	int space;
 	int hash;
