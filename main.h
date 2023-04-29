@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-/* *
+/**
  * flags - flags struct
  * @plus: +
  * @space: ' '
