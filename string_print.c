@@ -72,17 +72,13 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 		null = 1;
 	}
 	len = _strlen(s);
-	printf("\n len : %i \n", len);
 	if ((precision < len) && (precision >= 0))
 	{
-		printf("\n precision : %i \n", precision);
 		if (null == 1)
 			len = 0;
 		else
 			len = precision;
 	}
-	printf("\n len : %i \n", len);
-	printf("\n width : %i \n", width);
 	if (width > len)
 	{
 		width_diff = width - len;
