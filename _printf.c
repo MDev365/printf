@@ -124,7 +124,7 @@ int _printf(const char *format, ...)
 			if (conv_exist == 0)
 			{
 				i = i_before;
-				if (format[i + 1] == '\0')
+				if (format[i + 1] == '\0' || (format[i + 1] == ' ' && format[i + 2] == '\0'))
 				{
 					return (-1);
 				}
