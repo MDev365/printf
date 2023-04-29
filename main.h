@@ -2,7 +2,7 @@
 #define MAIN_H
 
 /**
- * flags - flags struct
+ * struct flags - flags struct
  * @plus: +
  * @space: ' '
  * @hash: #
