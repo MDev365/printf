@@ -59,18 +59,12 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 		local_num = (unsigned int)(num * -1);
 	}
 	else
-	{
 		local_num = (unsigned int)num;
-	}
-
-	/* convert number into array of digits */
 	for (i = 0 ; local_num > 0 ; i++)
 	{
 		digits_array[i] = local_num % 10;
 		local_num = local_num / 10;
 	}
-
-	/*check for negative and flags */
 	if (neg == 1)
 	{
 		buf[j] = '-';
@@ -86,15 +80,11 @@ int int_to_string(int num, char *buf, flags_ty *flags, int precision)
 		buf[j] = ' ';
 		j++;
 	}
-
-	/* convert digits into string */
 	for (i = i - 1; i >= 0 ; i--)
 	{
 		buf[j] = digits_array[i] + '0';
 		j++;
 	}
-
 	buf[j] = '\0';
-
 	return (j);
 }
