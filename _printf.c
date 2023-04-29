@@ -8,7 +8,8 @@
  * @conv_len: conversion length
  * Return: int length
 */
-int handle_conversion_specification(const char *format, va_list args, int *ind, int *conv_len)
+int handle_conversion_specification(const char *format, va_list args,
+									int *ind, int *conv_len)
 {
 	int i = *ind, width = 0, precision = -1, len = 0, conv_exist = 1;
 	flags_ty flags = {0, 0, 0, 0, 0, 0};
@@ -19,9 +20,9 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 	i += get_precision(&format[i + 1], &precision, args);
 	i += get_length_modifier(&format[i + 1], &length);
 	i += get_conversion_specifier(&format[i + 1], &flags);
-	
+
 	binary_buf[0] = '\0';
-	
+
 	if (flags.specifier == 'c')
 	{
 		c_arg = va_arg(args, int);
@@ -87,7 +88,7 @@ int handle_conversion_specification(const char *format, va_list args, int *ind, 
 
 	*ind = i;
 	*conv_len = len;
-	
+
 	if (flags.specifier != 0)
 		conv_exist = 1;
 	return (conv_exist);
@@ -117,8 +118,6 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			conv_len = 0;
-			conv_exist = 0;
 			i_before = i;
 			conv_exist = handle_conversion_specification(format, args, &i, &conv_len);
 			len += conv_len;
@@ -129,7 +128,7 @@ int _printf(const char *format, ...)
 				{
 					return (-1);
 				}
-				if(format[i + 1] != '\0')
+				if (format[i + 1] != '\0')
 				{
 					_putchar(format[i]);
 					len++;
