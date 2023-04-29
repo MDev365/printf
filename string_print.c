@@ -197,8 +197,7 @@ int print_string(char *s, int width, int precision, flags_ty *flags)
 			for (j = 0 ; j < width_diff ; j++)
 				_putchar(' ');
 			return (i + j);
-		}
-		else
+		} else
 		{
 			for (j = 0 ; j < width_diff ; j++)
 				_putchar(' ');
