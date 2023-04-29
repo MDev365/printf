@@ -57,7 +57,7 @@ int handle_zero(char *buf, flags_ty *flags, int precision)
  */
 int int_to_string(va_list args, char *buf, flags_ty *flags, int precision)
 {
-	int neg = 0, i, j = 0;
+	int neg = 0, i, j = 0, num;
 	int digits_array[40];
 	unsigned int local_num;
 	unsigned long ul;
